@@ -1,0 +1,662 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+
+
+  <meta name="keywords" content="java,对象,类," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?9d3fa8bd2d0f7a011dff9213f64e1124";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> Java漫游笔记-03-02-对象和类的知识点 // CodingLike </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">CodingLike</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xqxct_ug9yknr576Y6sb','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Java漫游笔记-03-02-对象和类的知识点
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-06-29
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/java/">java</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/06/29/Java漫游笔记-03-02-对象和类的知识点/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/29/Java漫游笔记-03-02-对象和类的知识点/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h2 id="u5BF9_u8C61_u6784_u9020_u8FC7_u7A0B"><a href="#u5BF9_u8C61_u6784_u9020_u8FC7_u7A0B" class="headerlink" title="对象构造过程"></a>对象构造过程</h2><ol>
+<li>所有属性，如果在声明中没有明确赋值，则初始化为缺省值（ <code>0</code> ， <code>false</code> ， <code>null</code> ）；</li>
+<li>按照声明次序，依次执行 <code>static</code> 语句（块）；（仅在类首次被加载的时候，执行一次，并且，如果该类继承自某个类，则先执行父类的<code>static</code> 语句）</li>
+<li>按照声明次序，依次执行对象语句块（类似的，如果该类继承自某个类，则先执行父类的语句块）；</li>
+<li>执行构造方法（如果在一个构造方法中，有调用另外一个构造方法，则先执行被调用的方法主体）。</li>
+</ol>
+<a id="more"></a>
+<h2 id="u65B9_u6CD5_u8C03_u7528_u8FC7_u7A0B"><a href="#u65B9_u6CD5_u8C03_u7528_u8FC7_u7A0B" class="headerlink" title="方法调用过程"></a>方法调用过程</h2><p>方法调用并不等同于方法执行，而是确定被执行的方法版本的过程。<br>方法调用有解析和分派（Dispatch）两种类型。<br>如果被调用的方法，在真正运行前就已经确定，并且在运行期不可变，这类方法的调用就称为解析。<br>而分派又可以分为静态分派和动态分派。<br>静态分派会根据传入参数的静态类型选择被调用方法的执行版本。对于同一个类或接口中的重载（Overload）方法，会采用静态分派。<br>动态分派则会根据调用者的实际类型选择被调用方法的执行版本。子类对父类的覆盖（Override）方法，会采用动态分派。</p>
+<ol>
+<li>如果是 <code>private</code> 、<code>static</code> 、<code>final</code> 方法或者是构造方法，那么在编译期就能够确定方法的执行版本，等到类加载阶段就可以解析成直接引用；</li>
+<li>静态分派也是在编译期完成的，它和解析并不是排它关系（想想静态方法也是可以重载的），它们分别在不同层次上去确定方法的执行版本；</li>
+<li>而动态分派则是在运行时完成的，执行引擎首先会根据类名、方法名，获取所有的候选方法。然后，再根据方法的参数列表，挑选出最合适的方法（如果同一个方法签名能够匹配到 0 个或者是多个方法，都会报错）。挑选的时候，首先会在实际类型中寻找匹配的方法，否则在父类中继续查找。因为每次调用方法都需要进行搜索，因此，虚拟机会预先为每个类创建一个<strong>方法表</strong>（一般发生在类加载的链接阶段），来提升性能。</li>
+</ol>
+<h2 id="u5176_u5B83"><a href="#u5176_u5B83" class="headerlink" title="其它"></a>其它</h2><ul>
+<li>使用 <code>this</code> 关键字，显式地区别对象的属性和局部变量。</li>
+<li>对象的属性会初始化为缺省值（如果不嫌麻烦，明确初始化值更好），而局部变量则不会。</li>
+<li>使用 <code>getter</code> 和 <code>setter</code> 方法来操纵对象的属性的主要好处是：增强了类的封装性，它提供了修改类内部实现的可行性。</li>
+<li><code>static</code> 变量，属于类变量，为该类所有对象所共享，每个对象都有一份自己的拷贝。</li>
+<li>使用 <code>static</code> 变量和 <code>static</code> 方法时，都应使用类名来调用。</li>
+<li>Java 的方法都是<strong>传值调用（call by value）</strong>，如果方法的参数是一个对象的引用，那么传递的也只是这个引用的一份拷贝。（不妨考虑一下：在一个方法内交换2个对象引用的例子：<code>swap(User a, User b)</code>）。</li>
+<li>直接返回一个对象的引用时，一定要慎重，因为这可能会破环封装性，不妨考虑一下，能否只是返回该对象的一个克隆作为替代。</li>
+<li>Java 通过包（ <code>package</code> ）机制来组织类，相当于命名空间的作用，可以避免类名的冲突。但是这由产生了另外一个问题，就是使用一个类时，需要书写完整的类名，非常繁琐。因此，又有了 <code>import</code> 。通过 <code>import</code> 事先告诉编译器应该去哪里查找某个类，从而达到了简写的目的。精确导入一个类，不会减少代码的大小，但是可以减少编译的时间，也有利于阅读（特别是打印出来的时候）。</li>
+<li><code>finalize</code> 方法会在垃圾回收器清除对象之前调用，但是由于很难确定它真正的调用时机，<strong>所以不要使用它</strong>。</li>
+<li>封装性是提升类的重用性和可靠性的保证。应尽量私有化属性和方法，因为一旦公开，也就意味着不受控制，不可修改。</li>
+<li>应尽可能地减少类和类之间的依赖，也就是所谓的<strong>“低耦合”</strong>。</li>
+<li>继承，体现了“is a”的关系。主要的好处是：<strong>代码复用</strong>。</li>
+<li>抽象类是<strong>不完整的</strong>（接口也是如此，就好像一张未完成的蓝图），因此，不要尝试使用它来构造对象（在使用匿名类的时候可能会产生错觉）。但是，通过声明抽象类或接口类型的变量，来实现多态是可取的。</li>
+<li>抽象方法，没有方法体，就好比先圈好地，然后等着子类来盖楼。</li>
+<li>关于访问控制：<code>private</code> - 默认（也就是不写修饰符） - <code>protected</code> - <code>public</code> ，封闭性递减。</li>
+</ul>
+<p>暂时先这么多吧，后面想到再补充。</p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/"> #java </a>
+          
+            <a href="/tags/对象/"> #对象 </a>
+          
+            <a href="/tags/类/"> #类 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/29/Java漫游笔记-03-03-Object类/">Java漫游笔记-03-03-Object类</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/29/Java漫游笔记-03-01-对象和类/">Java漫游笔记-03-01-对象和类</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="post-spread">
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      </div>
+    
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="2015/06/29/Java漫游笔记-03-02-对象和类的知识点/"
+               data-title="Java漫游笔记-03-02-对象和类的知识点" data-url="http://frankyzhu.github.io/2015/06/29/Java漫游笔记-03-02-对象和类的知识点/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/12979447?v=3&s=460" alt="Franky Zhu" />
+          <p class="site-author-name">Franky Zhu</p>
+        </div>
+        <p class="site-description motion-element"></p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/frankyzhu" target="_blank">GitHub</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5BF9_u8C61_u6784_u9020_u8FC7_u7A0B"><span class="nav-number">1.</span> <span class="nav-text">对象构造过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u65B9_u6CD5_u8C03_u7528_u8FC7_u7A0B"><span class="nav-number">2.</span> <span class="nav-text">方法调用过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5176_u5B83"><span class="nav-number">3.</span> <span class="nav-text">其它</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">Franky Zhu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"codinglike"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+
+</body>
+</html>

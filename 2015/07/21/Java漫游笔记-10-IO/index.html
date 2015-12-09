@@ -1,0 +1,694 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+
+
+  <meta name="keywords" content="IO,NIO,NIO.2,java," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?9d3fa8bd2d0f7a011dff9213f64e1124";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> Java漫游笔记-10-IO // CodingLike </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">CodingLike</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xqxct_ug9yknr576Y6sb','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Java漫游笔记-10-IO
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-07-21
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/java/">java</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/07/21/Java漫游笔记-10-IO/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/21/Java漫游笔记-10-IO/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h2 id="u6D41"><a href="#u6D41" class="headerlink" title="流"></a>流</h2><blockquote>
+<p>  所谓“流”，就是数据（字节或者是字符）的有序排列。</p>
+</blockquote>
+<h3 id="u8F93_u5165_u6D41_u548C_u8F93_u51FA_u6D41"><a href="#u8F93_u5165_u6D41_u548C_u8F93_u51FA_u6D41" class="headerlink" title="输入流和输出流"></a>输入流和输出流</h3><p>如果按照流动的方向来划分，流可以分为：输入流和输出流。<br>这里的输入和输出都是相对 Java 程序而言的。<br><strong>Java 程序从输入流读取数据，向输出流写入数据</strong>。</p>
+<p><img src="/images/输入流和输出流.png" alt="输入流和输出流" title="输入流和输出流"></p>
+<h3 id="u5B57_u8282_u6D41_u548C_u5B57_u7B26_u6D41"><a href="#u5B57_u8282_u6D41_u548C_u5B57_u7B26_u6D41" class="headerlink" title="字节流和字符流"></a>字节流和字符流</h3><p>如果按照数据类型进行划分，流又可以分为：字节流和字符流。<br>字节流：数据流中最小的数据单元是字节（byte）。<br>字符流：数据流中最小的数据单元是字符（char，Java 采用 Unicode 编码， 1 char = 2 byte）。</p>
+<a id="more"></a>
+<p>以下是使用字节流和字符流的一个示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testByteStream</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    InputStream in = <span class="keyword">null</span>;</span><br><span class="line">    OutputStream out = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        in = <span class="keyword">new</span> FileInputStream(<span class="string">"Java漫游笔记.txt"</span>);</span><br><span class="line">        out = <span class="keyword">new</span> FileOutputStream(<span class="string">"Java漫游笔记副本1.txt"</span>);</span><br><span class="line">        <span class="keyword">int</span> c; <span class="comment">// c 存储的是一个字节，8 bit</span></span><br><span class="line">        <span class="keyword">while</span> ((c = in.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">            out.write(c);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (in != <span class="keyword">null</span>) &#123;</span><br><span class="line">            in.close();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (out != <span class="keyword">null</span>) &#123;</span><br><span class="line">            out.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCharacterStream</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    Reader in = <span class="keyword">null</span>;</span><br><span class="line">    Writer out = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        in = <span class="keyword">new</span> FileReader(<span class="string">"Java漫游笔记.txt"</span>);</span><br><span class="line">        out = <span class="keyword">new</span> FileWriter(<span class="string">"Java漫游笔记副本2.txt"</span>);</span><br><span class="line">        <span class="keyword">int</span> c; <span class="comment">// c 存储的是一个字符，16 bit</span></span><br><span class="line">        <span class="keyword">while</span> ((c = in.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">            out.write(c);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (in != <span class="keyword">null</span>) &#123;</span><br><span class="line">            in.close();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (out != <span class="keyword">null</span>) &#123;</span><br><span class="line">            out.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看出，这两段代码非常相似，其最主要的区别在于它们分别使用了不同的类。<br>字节流的输入输出流分别使用 <code>FileInputStream</code> 和 <code>FileOutputStream</code> ，而字符流则使用了 <code>FileReader</code> 和 <code>FileWriter</code> 。<br><strong>字节流每次读写一个字节，而字符流则每次读写一个字符。</strong><br>在磁盘中，所有文件都是按字节储存的，这也就意味着，<strong>字节流可以用于任意类型的对象，而字符流只能处理字符对象。</strong><br>那么，既然字节流是万能的，为什么还需要字符流呢？<br>原因在于，字符对象（例如：字符串，文本文件）是我们经常需要操作的对象，而从字节到字符的转换，也需要进行一些额外的操作，因此，在字节流之上再包装一层，以提供更便捷的 API 是很有必要的。</p>
+<h3 id="u8BBE_u8BA1_u601D_u60F3"><a href="#u8BBE_u8BA1_u601D_u60F3" class="headerlink" title="设计思想"></a>设计思想</h3><p>从 <code>java.io</code> 包的层次结构来看，所有的字节流都继承自 <code>InputStream</code> 和 <code>OutputStream</code> ，而所有的字符流都继承自 <code>Reader</code> 和 <code>Writer</code> 。<br><code>InputStreamReader</code> 和 <code>OutputStreamWriter</code> 则提供了二者流通的桥梁。<br>除此之外，还包含许多 <code>InputStream</code> 、<code>OutputStream</code> 、<code>Reader</code> 、<code>Writer</code> 的子类。</p>
+<p><img src="/images/IO类概览.png" alt="IO类概览" title="IO类概览"></p>
+<p>Java IO 库的设计，使用了两个结构模式：装饰模式和适配器模式。</p>
+<h4 id="u88C5_u9970_u6A21_u5F0F_u7684_u5E94_u7528"><a href="#u88C5_u9970_u6A21_u5F0F_u7684_u5E94_u7528" class="headerlink" title="装饰模式的应用"></a>装饰模式的应用</h4><p>装饰模式在 IO 库中主要体现在，链接流处理器。<br><strong>通过把不同的流整合到一个链中，就可以动态地添加功能，以便实现更高级的输入、输出操作。</strong><br>例如，在前面的例子中，我们读取数据使用的是 <code>in.read()</code> ，这样一次读取一个字节是很慢的，我们可以从磁盘中一次读取一大块数据，然后再从读到的数据块中获取字节。这也就是我们常说的“缓冲”。<br>为了实现缓冲，可以把 <code>FileInputStream</code> 包装到 <code>BufferedInputStream</code> 中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testBufferedStream</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    InputStream in = <span class="keyword">null</span>;</span><br><span class="line">    OutputStream out = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        in = <span class="keyword">new</span> BufferedInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"Java漫游笔记.txt"</span>));</span><br><span class="line">        out = <span class="keyword">new</span> BufferedOutputStream(<span class="keyword">new</span> FileOutputStream(</span><br><span class="line">                <span class="string">"Java漫游笔记副本3.txt"</span>));</span><br><span class="line">        <span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">8192</span>];</span><br><span class="line">        <span class="keyword">int</span> len = <span class="number">0</span>; <span class="comment">// 读入缓冲区的总字节数</span></span><br><span class="line">        <span class="keyword">while</span> ((len = in.read(buf)) != -<span class="number">1</span>) &#123;</span><br><span class="line">            out.write(buf, <span class="number">0</span>, len);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (in != <span class="keyword">null</span>) &#123;</span><br><span class="line">            in.close();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (out != <span class="keyword">null</span>) &#123;</span><br><span class="line">            out.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然，缓冲只是通过流整合实现的其中的一种效果，我们还可以把 <code>InputStream</code> 包装到 <code>DataInputStream</code> 中，来获得 Java 基本数据类型的读取能力。<br>甚至，还可以自行编写包装标准流的类，来实现我们想要的效果。</p>
+<p><img src="/images/IO装饰模式.png" alt="IO装饰模式" title="IO装饰模式"></p>
+<h4 id="u9002_u914D_u5668_u6A21_u5F0F_u7684_u5E94_u7528"><a href="#u9002_u914D_u5668_u6A21_u5F0F_u7684_u5E94_u7528" class="headerlink" title="适配器模式的应用"></a>适配器模式的应用</h4><p>适配器模式通常有 2 种实现方式：</p>
+<ul>
+<li>一种是类适配，通过类似多继承的形式实现（例如：<code>class Adapter extends Adaptee implements Target</code>）；</li>
+<li>而另外一种是对象适配，一般是通过聚合来实现。</li>
+</ul>
+<p>在 <code>java.io</code> 包中，所有的原始流处理器都是适配器类。<br>还是以 <code>FileInputStream</code> 为例，它继承了 <code>InputStrem</code> ，同时还持有一个对 <code>FileDiscriptor</code> 的引用。这是一个将 <code>FileDiscriptor</code> 对象适配成 <code>InputStrem</code> 类型的对象的适配器模式。</p>
+<p><img src="/images/IO适配器模式1.png" alt="IO适配器模式" title="IO适配器模式"></p>
+<p><code>InputStreamReader</code> （严格来说，应该是 <code>StreamDecoder</code> ）的设计也应用了适配器模式：</p>
+<p><img src="/images/IO适配器模式2.png" alt="IO适配器模式" title="IO适配器模式"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testByteStreamToCharacterStream</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    Reader in = <span class="keyword">null</span>;</span><br><span class="line">    Writer out = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 将 InputStream 适配成 Reader</span></span><br><span class="line">        in = <span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(<span class="string">"Java漫游笔记.txt"</span>));</span><br><span class="line">        out = <span class="keyword">new</span> OutputStreamWriter(</span><br><span class="line">                <span class="keyword">new</span> FileOutputStream(<span class="string">"Java漫游笔记副本4.txt"</span>));</span><br><span class="line">        <span class="keyword">int</span> c; <span class="comment">// c 存储的是一个字符，16 bit</span></span><br><span class="line">        <span class="keyword">while</span> ((c = in.read()) != -<span class="number">1</span>) &#123;</span><br><span class="line">            out.write(c);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (in != <span class="keyword">null</span>) &#123;</span><br><span class="line">            in.close();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (out != <span class="keyword">null</span>) &#123;</span><br><span class="line">            out.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u6587_u4EF6"><a href="#u6587_u4EF6" class="headerlink" title="文件"></a>文件</h2><p>文件是我们最近常见的一种数据源。学习 IO ，就不能不学文件的操作。<br>在 Java 中，<code>File</code> 类是对文件和目录的抽象。通过 <code>File</code> 类可以获取文件和目录的信息，并管理它们。</p>
+<h3 id="u521B_u5EFA"><a href="#u521B_u5EFA" class="headerlink" title="创建"></a>创建</h3><h4 id="u521B_u5EFA_u6587_u4EF6"><a href="#u521B_u5EFA_u6587_u4EF6" class="headerlink" title="创建文件"></a>创建文件</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 只是创建了一个 File 对象，并没有真正创建文件</span></span><br><span class="line"><span class="comment">// 默认在当前工作目录下创建，可以通过 System.getProperty("user.dir") 获取具体的路径</span></span><br><span class="line">File file = <span class="keyword">new</span> File(<span class="string">"filename.suffix"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在 D 盘下创建文件</span></span><br><span class="line">File anotherFile = <span class="keyword">new</span> File(<span class="string">"D:"</span> + File.separator + <span class="string">"filename.suffix"</span>);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 创建一个新的空文件</span></span><br><span class="line">    <span class="comment">// 如果指定的文件不存在并成功地创建，则返回 true</span></span><br><span class="line">    <span class="comment">// 如果指定的文件已经存在，则返回 false</span></span><br><span class="line">    anotherFile.createNewFile();</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    <span class="comment">// 如果没有写权限，会抛出异常，java.io.IOException: 拒绝访问。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="u521B_u5EFA_u76EE_u5F55"><a href="#u521B_u5EFA_u76EE_u5F55" class="headerlink" title="创建目录"></a>创建目录</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">File path = <span class="keyword">new</span> File(<span class="string">"newpath"</span>);</span><br><span class="line"><span class="comment">// 创建目录</span></span><br><span class="line">path.mkdir();</span><br><span class="line"></span><br><span class="line">File paths = <span class="keyword">new</span> File(<span class="string">"home"</span> + File.separator + <span class="string">"user"</span>);</span><br><span class="line"><span class="comment">// 如果父目录不存在，也会一并创建</span></span><br><span class="line">paths.mkdirs();</span><br></pre></td></tr></table></figure>
+<h3 id="u5220_u9664"><a href="#u5220_u9664" class="headerlink" title="删除"></a>删除</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 删除文件或目录</span></span><br><span class="line"><span class="comment">// 需要注意的是：如果是删除目录，必须为空才能删除</span></span><br><span class="line">fileOrPath.delete();</span><br></pre></td></tr></table></figure>
+<p>如果需要删除非空目录，一般需要进行递归操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteDirectory</span><span class="params">(File dir)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (dir != <span class="keyword">null</span> &amp;&amp; dir.exists()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (dir.isDirectory()) &#123;</span><br><span class="line">            File[] files = dir.listFiles();</span><br><span class="line">            <span class="keyword">for</span> (File file : files) &#123;</span><br><span class="line">                deleteDirectory(file);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 删除目录</span></span><br><span class="line">            dir.delete();</span><br><span class="line">            System.out.println(<span class="string">"Directory is deleted : "</span> + dir.getAbsolutePath());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 直接删除文件</span></span><br><span class="line">            dir.delete();</span><br><span class="line">            System.out.println(<span class="string">"File is deleted : "</span> + dir.getAbsolutePath());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="u8BFB_u5199"><a href="#u8BFB_u5199" class="headerlink" title="读写"></a>读写</h3><p>读写操作可以参考前面输入输出流的示例代码。</p>
+<h3 id="u5176_u4ED6"><a href="#u5176_u4ED6" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><code>oldFile.renameTo(newFile)</code> ，可以重命名文件，需要注意的是，重命名无法移动文件。移动文件可以先重命名文件，再将原文件拷贝到新文件，最后删除原文件。</li>
+<li>判断：<ul>
+<li><code>isDirectory()</code>   是否是一个目录</li>
+<li><code>isFile()</code>        是否是一个文件</li>
+<li><code>exists()</code>        文件或目录是否存在</li>
+<li><code>isHidden()</code>      是否是一个隐藏文件</li>
+<li><code>canRead()</code>       是否可以读取</li>
+<li><code>canWrite()</code>      是否可以修改</li>
+<li><code>canExecute()</code>    是否可以执行</li>
+</ul>
+</li>
+<li><code>getPath()</code> 可以获取相对路径， <code>getAbsolutePath()</code> 可以获取绝对路径，<code>getCanonicalPath()</code> 可以获取标准的绝对路径（会移除多余的名称 “.” 和 “..” 之类的字符）。</li>
+<li><code>path.list()</code> 和 <code>path.listFiles()</code> 可以返回当前目录中的文件和子目录清单。</li>
+<li><code>FilenameFilter</code> 文件名过滤器接口，可以用于筛选文件。</li>
+<li><code>RandomAccessFile</code> 类，支持从指定的位置读写文件。</li>
+</ul>
+<h2 id="u65B0_u7279_u6027"><a href="#u65B0_u7279_u6027" class="headerlink" title="新特性"></a>新特性</h2><h3 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h3><p>JDK 1.4 对 IO 做了大量的改进，新增了 <code>java.nio</code> 包（New I/O），主要对缓冲区（Buffer）、字符集（Charset）、通道（Channel）等方面做了补充。</p>
+<p>NIO 和 IO 的主要区别在于：</p>
+<ul>
+<li><strong>IO 是面向流的。</strong>这意味着每次从流中读一个或多个字节，直至读取所有字节，它们没有被缓存在任何地方。并且，流的读写通常是单向的。<strong>而 NIO 则是基于通道（ Channel ）和缓冲区（ Buffer ）进行操作，</strong>数据总是从通道读取到缓冲区中，或者从缓冲区写入到通道中。</li>
+<li><strong>IO 中的各种流是阻塞的。</strong>这意味着当一个线程调用 <code>read()</code> 或 <code>write()</code> 时，该线程会被阻塞，直到有一些数据被读取，或数据完全写入。<strong>而 NIO 是非阻塞的，</strong>当一个线程从某通道读取数据时，它仅能得到目前可用的数据，如果目前没有可用的数据，就什么都不会获取。在数据变的可以读取之前，该线程无需等待，而是可以继续去做其他的事情。非阻塞写亦是如此。对于 NIO 而言，一个线程可以同时管理多个通道，当一个通道上的读写需要等待时，它就会去执行其他通道上的读写操作。</li>
+</ul>
+<h3 id="NIO-2"><a href="#NIO-2" class="headerlink" title="NIO.2"></a>NIO.2</h3><p>JDK 1.7 针对 IO 也做了更新。新增的 <code>java.nio.file</code> 包，提供了一些使用起来更方便的类，例如：<code>Files</code> 、 <code>Paths</code> 和 <code>Path</code>。<br>事实上，基础 IO 包中的一些类，也就此更新了一些 API 。<br>例如：<code>java.io.File</code> 类中新增了 <code>toPath()</code> 方法，可以 <code>File</code> 转化为新的 <code>Path</code> 。<br>这些新的类和 API 会逐渐流行起来。因此，如果使用新版本的 JDK ，建议优先使用它们。</p>
+<h3 id="try-with-resources"><a href="#try-with-resources" class="headerlink" title="try-with-resources"></a>try-with-resources</h3><p>JDK 1.7 还新增了一个 IO 相关的语法糖，称为 <strong>“try-with-resource”</strong> 异常处理机制。可以帮助我们自动关闭资源，减少异常处理代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testTryWithResources</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> (</span><br><span class="line">            FileReader fr = <span class="keyword">new</span> FileReader(<span class="string">"Java漫游笔记.txt"</span>);</span><br><span class="line">            BufferedReader br = <span class="keyword">new</span> BufferedReader(fr);</span><br><span class="line">        ) &#123;</span><br><span class="line">        String str;</span><br><span class="line">        <span class="keyword">while</span> ((str = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>对于流处理器而言，我们关心的是数据的内容，而 File 关注的则是数据的存储介质。<br>首先确定我们的程序是需要读取数据还是写入数据。<br>然后按照输入、输出源（数组、文件、对象、字符）的类型选用不同类。<br>通过流的组合，可以实现增强的功能（例如：缓存、读写基本类型、按行读取、格式化等等）。<br>基础 IO 使用简单，但会阻塞线程；而 NIO 可以使用一个（或几个）线程管理多个通道（网络连接或文件），但从多个通道中解析数据可能会更加复杂。<br>如果需要管理同时打开的成大量连接，并且这些连接每次只是发送少量的数据（例如：即时通讯服务器），使用 NIO 可能是一个明智的选择。<br>相反，如果你只少量的连接，并且这些连接会使用非常高的带宽，那么，使用基础的 IO 实现可能会更为恰当。</p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IO/"> #IO </a>
+          
+            <a href="/tags/NIO/"> #NIO </a>
+          
+            <a href="/tags/NIO-2/"> #NIO.2 </a>
+          
+            <a href="/tags/java/"> #java </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/29/Java漫游笔记-11-网络编程/">Java漫游笔记-11-网络编程</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/16/Java漫游笔记-09-多线程/">Java漫游笔记-09-多线程</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="post-spread">
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      </div>
+    
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="2015/07/21/Java漫游笔记-10-IO/"
+               data-title="Java漫游笔记-10-IO" data-url="http://frankyzhu.github.io/2015/07/21/Java漫游笔记-10-IO/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/12979447?v=3&s=460" alt="Franky Zhu" />
+          <p class="site-author-name">Franky Zhu</p>
+        </div>
+        <p class="site-description motion-element"></p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/frankyzhu" target="_blank">GitHub</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u6D41"><span class="nav-number">1.</span> <span class="nav-text">流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u8F93_u5165_u6D41_u548C_u8F93_u51FA_u6D41"><span class="nav-number">1.1.</span> <span class="nav-text">输入流和输出流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5B57_u8282_u6D41_u548C_u5B57_u7B26_u6D41"><span class="nav-number">1.2.</span> <span class="nav-text">字节流和字符流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u8BBE_u8BA1_u601D_u60F3"><span class="nav-number">1.3.</span> <span class="nav-text">设计思想</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u88C5_u9970_u6A21_u5F0F_u7684_u5E94_u7528"><span class="nav-number">1.3.1.</span> <span class="nav-text">装饰模式的应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u9002_u914D_u5668_u6A21_u5F0F_u7684_u5E94_u7528"><span class="nav-number">1.3.2.</span> <span class="nav-text">适配器模式的应用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u6587_u4EF6"><span class="nav-number">2.</span> <span class="nav-text">文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u521B_u5EFA"><span class="nav-number">2.1.</span> <span class="nav-text">创建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u521B_u5EFA_u6587_u4EF6"><span class="nav-number">2.1.1.</span> <span class="nav-text">创建文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u521B_u5EFA_u76EE_u5F55"><span class="nav-number">2.1.2.</span> <span class="nav-text">创建目录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5220_u9664"><span class="nav-number">2.2.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u8BFB_u5199"><span class="nav-number">2.3.</span> <span class="nav-text">读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5176_u4ED6"><span class="nav-number">2.4.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u65B0_u7279_u6027"><span class="nav-number">3.</span> <span class="nav-text">新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NIO"><span class="nav-number">3.1.</span> <span class="nav-text">NIO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NIO-2"><span class="nav-number">3.2.</span> <span class="nav-text">NIO.2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#try-with-resources"><span class="nav-number">3.3.</span> <span class="nav-text">try-with-resources</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u603B_u7ED3"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">Franky Zhu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"codinglike"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+
+</body>
+</html>

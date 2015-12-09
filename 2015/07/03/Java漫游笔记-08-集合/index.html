@@ -1,0 +1,847 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+
+
+  <meta name="keywords" content="java,集合," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?9d3fa8bd2d0f7a011dff9213f64e1124";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> Java漫游笔记-08-集合 // CodingLike </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">CodingLike</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xqxct_ug9yknr576Y6sb','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Java漫游笔记-08-集合
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-07-03
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/java/">java</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/07/03/Java漫游笔记-08-集合/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/03/Java漫游笔记-08-集合/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h2 id="u4EC0_u4E48_u662F_u96C6_u5408"><a href="#u4EC0_u4E48_u662F_u96C6_u5408" class="headerlink" title="什么是集合"></a>什么是集合</h2><p>在 Java 中，集合表示一组对象，这些对象也称为集合的元素。</p>
+<h2 id="u4F7F_u7528_u96C6_u5408_u6846_u67B6_u7684_u597D_u5904"><a href="#u4F7F_u7528_u96C6_u5408_u6846_u67B6_u7684_u597D_u5904" class="headerlink" title="使用集合框架的好处"></a>使用集合框架的好处</h2><p>通过 API 文档，我们不难发现，其实在 JDK 1.0 的时候，只包含了很少的集合类（例如：<code>Vector</code> ，<code>Stack</code> ，<code>Array</code> ，<code>Hashtable</code> ），<br>然而，集合的应用场景非常广泛，因此，在 JDK 1.2 的时候由大牛 <strong>Josh Bloch</strong> 设计并实现的集合框架便应运而生了。<br>使用 JDK 提供的集合框架，主要好处如下:</p>
+<ul>
+<li>减少开发成本，不用开发者再造“轮子”。</li>
+<li>JDK 提供的集合类都经过了良好的测试，在代码质量和性能上都有所保证。</li>
+<li>提供了一套接口标准，为不同开发者提供了一种“共同的语言”。</li>
+</ul>
+<a id="more"></a>
+<h2 id="u96C6_u5408_u6846_u67B6_u7684_u5C42_u6B21_u7ED3_u6784"><a href="#u96C6_u5408_u6846_u67B6_u7684_u5C42_u6B21_u7ED3_u6784" class="headerlink" title="集合框架的层次结构"></a>集合框架的层次结构</h2><p>Java 的集合框架主要有两大接口： <code>Collection</code> 和 <code>Map</code> 。</p>
+<ul>
+<li><code>Collection</code> 用于存放一组对象（多个单对象），<code>Map</code> 用于存放键值对。</li>
+<li><code>Collection</code> 中常用的有 <code>List</code> 和 <code>Set</code> 。<ul>
+<li><code>List</code> 允许放入相同的对象，而 <code>Set</code> 不能。</li>
+<li><code>List</code> 接口常用的实现类有：<code>ArrayList</code> 、<code>LinkedList</code> 、<code>Vector</code> 和 <code>Stack</code> 。</li>
+<li><code>Set</code> 接口常用的实现类有： <code>HashSet</code> 、<code>TreeSet</code> 。</li>
+</ul>
+</li>
+<li><code>Map</code> 接口常用的实现类有：<code>HashMap</code> 、<code>TreeMap</code> 。</li>
+</ul>
+<p>两大接口的层次结构：</p>
+<ul>
+<li>java.util.Collection<ul>
+<li>java.util.Set</li>
+<li>java.util.SortedSet</li>
+<li>java.util.NavigableSet</li>
+<li>java.util.Queue</li>
+<li>java.util.concurrent.BlockingQueue</li>
+<li>java.util.concurrent.TransferQueue</li>
+<li>java.util.Deque</li>
+<li>java.util.concurrent.BlockingDeque</li>
+</ul>
+</li>
+<li>java.util.Map<ul>
+<li>java.util.SortedMap</li>
+<li>java.util.NavigableMap</li>
+<li>java.util.concurrent.ConcurrentMap</li>
+<li>java.util.concurrent.ConcurrentNavigableMap</li>
+</ul>
+</li>
+</ul>
+<p>集合框架接口层次结构：</p>
+<p><img src="/images/集合框架接口层次结构.png" alt="集合框架接口层次结构" title="集合框架接口层次结构"></p>
+<p>集合框架类层次结构：</p>
+<p><img src="/images/集合框架类层次结构.png" alt="集合框架类层次结构" title="集合框架类层次结构"></p>
+<h2 id="u4E3B_u8981_u7684_u63A5_u53E3_u548C_u5B9E_u73B0_u7C7B"><a href="#u4E3B_u8981_u7684_u63A5_u53E3_u548C_u5B9E_u73B0_u7C7B" class="headerlink" title="主要的接口和实现类"></a>主要的接口和实现类</h2><table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>Hash Table</th>
+<th>Resizable Array</th>
+<th>Balanced Tree</th>
+<th>Linked List</th>
+<th>Hash Table + Linked List</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Set</td>
+<td>HashSet</td>
+<td></td>
+<td>TreeSet</td>
+<td></td>
+<td>LinkedHashSet</td>
+</tr>
+<tr>
+<td>List</td>
+<td></td>
+<td>ArrayList</td>
+<td></td>
+<td>LinkedList</td>
+<td></td>
+</tr>
+<tr>
+<td>Deque</td>
+<td></td>
+<td>ArrayDeque</td>
+<td></td>
+<td>LinkedList</td>
+<td></td>
+</tr>
+<tr>
+<td>Map</td>
+<td>HashMap</td>
+<td></td>
+<td>TreeMap</td>
+<td></td>
+<td>LinkedHashMap</td>
+</tr>
+</tbody>
+</table>
+<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p><code>List</code> 是有序的集合，这个有序不是指集合里面的元素是按值排序的，而是指这些元素存储的位置是有序的。更确切地讲，用户可以把元素添加到指定的位置。</p>
+<h4 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h4><p><code>ArrayList</code> 是一个动态数组，默认是空的，相当于 <code>{}</code>。<br><code>add</code> 操作会自动扩充容量，默认容量为 10 。<br>当 <code>ArrayList</code> 的容量即将超出限制时，会自动扩充：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// overflow-conscious code</span></span><br><span class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    <span class="comment">// minCapacity is usually close to size, so this is a win:</span></span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单来说，就是扩大为当前容量的 1.5 倍。<br>其中：<code>minCapacity</code> 为当前容量 + 1 ，最大容量为 <code>Integer.MAX_VALUE</code> 。<br>从实现的代码可以知道，<strong>扩容的时候，需要将现有的元素复制到新数组中</strong>。因此，当元素很多的时候，这个复制操作是很昂贵的。<br>因此，<strong>在添加大量元素前，建议使用 <code>ensureCapacity()</code> 方法来增加 <code>ArrayList</code> 的容量，以减少递增式扩容的开销</strong>。</p>
+<p><code>add(E)</code> 和 <code>add(int, E)</code> 的主要区别在于， <code>add(int, E)</code> 需要把 index 和它后面的元素向后移动一位。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;</span><br><span class="line">    rangeCheckForAdd(index);</span><br><span class="line"></span><br><span class="line">    ensureCapacityInternal(size + <span class="number">1</span>);  <span class="comment">// Increments modCount!!</span></span><br><span class="line">    System.arraycopy(elementData, index, elementData, index + <span class="number">1</span>,</span><br><span class="line">                     size - index);</span><br><span class="line">    elementData[index] = element;</span><br><span class="line">    size++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>remove(int)</code> 不需要通过遍历来查找对象，因此，性能会比 <code>remove(Object)</code> 要好。<br>但是，不管怎么样，都需要通过 <code>System.arraycopy()</code> 来移动受影响的元素。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    rangeCheck(index);</span><br><span class="line"></span><br><span class="line">    modCount++;</span><br><span class="line">    E oldValue = elementData(index);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> numMoved = size - index - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (numMoved &gt; <span class="number">0</span>)</span><br><span class="line">        System.arraycopy(elementData, index+<span class="number">1</span>, elementData, index,</span><br><span class="line">                         numMoved);</span><br><span class="line">    elementData[--size] = <span class="keyword">null</span>; <span class="comment">// clear to let GC do its work</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> oldValue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (o == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; size; index++)</span><br><span class="line">            <span class="keyword">if</span> (elementData[index] == <span class="keyword">null</span>) &#123;</span><br><span class="line">                fastRemove(index);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; size; index++)</span><br><span class="line">            <span class="keyword">if</span> (o.equals(elementData[index])) &#123;</span><br><span class="line">                fastRemove(index);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对应 <code>ArrayList</code> 而言，由于它使用数组实现，节约空间，并且可以通过索引高效地获取元素（<code>get(int)</code> / <code>set(int, E)</code>），其主要缺点在于，增删操作性能较差。</p>
+<h4 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h4><p><code>LinkedList</code> 是一个双向链表。<br>链表没有容量限制，但双向链表的实现需要占用更多的空间，也需要额外的链表指针操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    E item;</span><br><span class="line">    Node&lt;E&gt; next;</span><br><span class="line">    Node&lt;E&gt; prev;</span><br><span class="line">    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) &#123;</span><br><span class="line">        <span class="keyword">this</span>.item = element;</span><br><span class="line">        <span class="keyword">this</span>.next = next;</span><br><span class="line">        <span class="keyword">this</span>.prev = prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>add</code> 操作相对 <code>ArrayList</code> 就简单很多，不用考虑复制数组的问题，只需要修改前后节点的引用即可：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">linkLast</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; l = last;</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;&gt;(l, e, <span class="keyword">null</span>);</span><br><span class="line">    last = newNode;</span><br><span class="line">    <span class="keyword">if</span> (l == <span class="keyword">null</span>)</span><br><span class="line">        first = newNode;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        l.next = newNode;</span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>get</code> 操作则比较麻烦，需要遍历，不过 <strong>Josh Bloch</strong> 也做了一点优化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function">Node&lt;E&gt; <span class="title">node</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// assert isElementIndex(index);</span></span><br><span class="line">    <span class="keyword">if</span> (index &lt; (size &gt;&gt; <span class="number">1</span>)) &#123;</span><br><span class="line">        Node&lt;E&gt; x = first;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; index; i++)</span><br><span class="line">            x = x.next;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        Node&lt;E&gt; x = last;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = size - <span class="number">1</span>; i &gt; index; i--)</span><br><span class="line">            x = x.prev;</span><br><span class="line">        <span class="keyword">return</span> x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><p><code>Map</code> 以键-值对的方式存放元素，也有人称之为：映射表。<br>一个 <code>Map</code> 中不能包含有重复的键，每个键最多只能映射到一个值。</p>
+<p>至于 <code>Map</code> 为什么没有继承自 <code>Collection</code> （能不能把 <code>Map</code> 视为键-值对的集合，或者视为用键作为索引的值的集合）？<br>官方给出的解释是：</p>
+<blockquote>
+<p>  我们认为映射（mappings）不是集合（collections），集合也不是映射。因此，<code>Map</code> 继承 <code>Collection</code> 接口没有意义，反之亦然。<br>  <strong>如果 <code>Map</code> 是一种 <code>Collection</code> ，那么它的元素是什么呢？</strong>唯一合理的答案是“键-值对”，但是，这样一来就只能提供一种非常有限的（没什么用的）映射抽象。你不能按键取值，也不能仅仅依据键来删除元素（因为不知道这个键映射的值）。<br>  如果  <code>Collection</code> 继承自 <code>Map</code> ，这又会引发另一个问题：什么是键？没有令人满意的答案。这样的设计会被迫出现一个不自然的接口。<br>  事实上，可以将 <code>Map</code> 看作是 <code>Collection</code> ，这体现在 <code>Map</code> 提供了三种（键、值、键-值对） <code>Collection</code> 视图（允许以键集 KeySet 、值集合  values 或键-值映射关系集 EntrySet 的形式查看某个 <code>Map</code> 的内容）……</p>
+</blockquote>
+<h4 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h4><p>对于 <code>HashMap</code> 的理解，重点在于理解它的结构和插入操作。<br><code>HashMap</code> 基于数组实现，数组中存放链表或者是红黑树（在 JDK 1.8 中，如果链表长度超过阀值[8]，则会把链表转换成红黑树）。而这些链表以及红黑树又有人称之为桶（bucket）。</p>
+<p>大概是长成这个样子的：</p>
+<p><img src="/images/HashMap.png" alt="HashMap 结构示意图" title="HashMap 结构示意图"></p>
+<p>核心代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组</span></span><br><span class="line"><span class="keyword">transient</span> Node&lt;K,V&gt;[] table;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 链表节点</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">implements</span> <span class="title">Map</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> hash;</span><br><span class="line">    <span class="keyword">final</span> K key;</span><br><span class="line">    V value;</span><br><span class="line">    Node&lt;K,V&gt; next;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// some code</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 红黑树节点</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">LinkedHashMap</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">        TreeNode&lt;K,V&gt; parent;  <span class="comment">// red-black tree links</span></span><br><span class="line">        TreeNode&lt;K,V&gt; left;</span><br><span class="line">        TreeNode&lt;K,V&gt; right;</span><br><span class="line">        TreeNode&lt;K,V&gt; prev;    <span class="comment">// needed to unlink next upon deletion</span></span><br><span class="line">        <span class="keyword">boolean</span> red;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// some code</span></span><br></pre></td></tr></table></figure>
+<p>插入元素时，首先会先对 key 对象进行 hash 操作，然后根据 hash 值定位到具体的桶。<br>如果 hash 相等，并且 key 相同，则覆盖旧值，并返回旧值。<br>如果 hash 相等，但是 key 不同，就产生了所谓的<strong>“ Hash 冲突”</strong>。<br>解决 Hash 冲突通常有两种方法：<strong>开放地址法</strong>和<strong>链表法</strong>。</p>
+<ul>
+<li><strong>开放地址法</strong>会通过一个探测算法，当某个桶位已经被占据的情况下继续查找下一个可以使用的桶位。</li>
+<li><strong>链表法</strong>则会将相同 hash 值的对象组织成一个链表放在 hash 值对应的桶位。</li>
+</ul>
+<p><code>HashMap</code> 的实现采用的就是链表法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// hash 操作</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    <span class="keyword">return</span> (key == <span class="keyword">null</span>) ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> putVal(hash(key), key, value, <span class="keyword">false</span>, <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">boolean</span> onlyIfAbsent,</span><br><span class="line">               <span class="keyword">boolean</span> evict)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; <span class="keyword">int</span> n, i;</span><br><span class="line">    <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">        <span class="comment">// 如果链表数组为空，进行初始化</span></span><br><span class="line">        n = (tab = resize()).length;</span><br><span class="line">    <span class="comment">// 获取对象的存储位置</span></span><br><span class="line">    <span class="keyword">if</span> ((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == <span class="keyword">null</span>)</span><br><span class="line">        <span class="comment">// 如果为空，则插入新节点</span></span><br><span class="line">        tab[i] = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        Node&lt;K,V&gt; e; K k;</span><br><span class="line">        <span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">            ((k = p.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">            <span class="comment">// 如果 hash 相等并且 key 相同，则覆盖旧值，并返回旧值</span></span><br><span class="line">            e = p;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">            <span class="comment">// 如果是树节点</span></span><br><span class="line">            e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="keyword">this</span>, tab, hash, key, value);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> binCount = <span class="number">0</span>; ; ++binCount) &#123;</span><br><span class="line">                <span class="comment">// 将新插入的对象与桶中的所有对象进行比较</span></span><br><span class="line">                <span class="keyword">if</span> ((e = p.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="comment">// 如果对象不存在，那么会新增一个节点</span></span><br><span class="line">                    <span class="comment">//也就是说 hash 冲突后，桶里存储的不是单个对象，而是一个 单向链表</span></span><br><span class="line">                    p.next = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">                    <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st</span></span><br><span class="line">                        <span class="comment">// 如果链表长度超过阀值，则会把链表转换成红黑树</span></span><br><span class="line">                        treeifyBin(tab, hash);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                    ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                p = e;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123; <span class="comment">// existing mapping for key</span></span><br><span class="line">            <span class="comment">// 更新 hash 值和 key 值均相同的节点 value 值</span></span><br><span class="line">            V oldValue = e.value;</span><br><span class="line">            <span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="keyword">null</span>)</span><br><span class="line">                e.value = value;</span><br><span class="line">            afterNodeAccess(e);</span><br><span class="line">            <span class="comment">// 并返回旧值</span></span><br><span class="line">            <span class="keyword">return</span> oldValue;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ++modCount;</span><br><span class="line">    <span class="keyword">if</span> (++size &gt; threshold)</span><br><span class="line">        <span class="comment">// 桶数量超过阀值时，会成倍扩容数组</span></span><br><span class="line">        resize();</span><br><span class="line">    afterNodeInsertion(evict);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其实不管是 put 操作还是 get 操作，首先要做的就是定位，也就是找到对象存储的地址。<br>因此，既要考虑计算的性能，又要尽量避免冲突。<br><code>HashMap</code> 的做法是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i = (n - <span class="number">1</span>) &amp; hash</span><br></pre></td></tr></table></figure>
+<p><strong>这种实现假定哈希函数能够将元素离散地分布在各桶之间，因为只有这样才可为 get/put 之类的操作提供稳定的性能。</strong></p>
+<p>关于 <code>HashMap</code> 的性能，影响的参数有两个：<strong>初始容量</strong> 和 <strong>加载因子</strong> 。</p>
+<ul>
+<li>容量是指 <code>HashMap</code> 中能够填充的桶的最大数量，初始容量即创建时的容量（默认为 16 ）。</li>
+<li>加载因子可以理解为填充比（默认为 0.75f ），是一个阀值，当 <code>HashMap</code> 中桶的数量大于加载因子与容量的乘积时（0.75f * 16），就要对该 <code>HashMap</code> 进行 resize 操作。</li>
+</ul>
+<p>不难看出：<br>如果把加载因子设置得高一些，就可以节约空间，但同时又会增加查询成本。<br>如果初始容量设置太小，又会导致 resize 操作，因此，如果需要自定义参数，应考虑到需要存储的对象数量。</p>
+<h4 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h4><p><code>TreeMap</code> 是一个基于红黑树（Red-Black tree）的 <code>NavigableMap</code> 实现，支持按 key 排序。<br>可以通过 <code>firstKey()</code> ，<code>lastKey()</code> 取得最大最小的 key 。<br>还可以通过 <code>subMap(K fromKey, K toKey)</code> ，<code>tailMap(K fromKey)</code> 获得子集视图。</p>
+<p><code>TreeMap</code> 的 put 操作会从根节点开始判断，基于 compare 的值来决定元素放在树的左边还是右边，如果找到相等的 key ，那么就直接替换为新值，如果一直找不到，则创建一个新的 Entry 对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">    Entry&lt;K,V&gt; t = root;</span><br><span class="line">    <span class="keyword">if</span> (t == <span class="keyword">null</span>) &#123;</span><br><span class="line">        compare(key, key); <span class="comment">// type (and possibly null) check</span></span><br><span class="line"></span><br><span class="line">        root = <span class="keyword">new</span> Entry&lt;&gt;(key, value, <span class="keyword">null</span>);</span><br><span class="line">        size = <span class="number">1</span>;</span><br><span class="line">        modCount++;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> cmp;</span><br><span class="line">    Entry&lt;K,V&gt; parent;</span><br><span class="line">    <span class="comment">// split comparator and comparable paths</span></span><br><span class="line">    Comparator&lt;? <span class="keyword">super</span> K&gt; cpr = comparator;</span><br><span class="line">    <span class="keyword">if</span> (cpr != <span class="keyword">null</span>) &#123;</span><br><span class="line">        do &#123;</span><br><span class="line">            parent = t;</span><br><span class="line">            cmp = cpr.compare(key, t.key);</span><br><span class="line">            <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>)</span><br><span class="line">                t = t.left;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>)</span><br><span class="line">                t = t.right;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> t.setValue(value);</span><br><span class="line">        &#125; <span class="keyword">while</span> (t != <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (key == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">        <span class="annotation">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">            Comparable&lt;? <span class="keyword">super</span> K&gt; k = (Comparable&lt;? <span class="keyword">super</span> K&gt;) key;</span><br><span class="line">        do &#123;</span><br><span class="line">            parent = t;</span><br><span class="line">            cmp = k.compareTo(t.key);</span><br><span class="line">            <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>)</span><br><span class="line">                t = t.left;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>)</span><br><span class="line">                t = t.right;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> t.setValue(value);</span><br><span class="line">        &#125; <span class="keyword">while</span> (t != <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Entry&lt;K,V&gt; e = <span class="keyword">new</span> Entry&lt;&gt;(key, value, parent);</span><br><span class="line">    <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>)</span><br><span class="line">        parent.left = e;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        parent.right = e;</span><br><span class="line">    fixAfterInsertion(e);</span><br><span class="line">    size++;</span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>TreeMap</code> 的 containsKey、get、put 和 remove 操作时间开销为：log(n) 。</p>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p><code>Set</code> 是一个不包含重复元素的集合。<br>为什么先学习 <code>Map</code> ？<br>是因为 <code>Set</code> 的子类的几乎都是基于特定的 <code>Map</code> 实现的。<br>前面我们可以看到 <code>Map</code> 的键集视图 KeySet 就是一个 <code>Set</code> 。</p>
+<h4 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h4><p><code>HashSet</code> 的内部实现是 <code>HashMap</code> ，使用 key 保存元素，而 value 则统一使用一个常量填充。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> HashMap&lt;E,Object&gt; map;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Dummy value to associate with an Object in the backing Map</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object PRESENT = <span class="keyword">new</span> Object();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> map.put(e, PRESENT)==<span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h4><p><code>TreeSet</code> 的内部实现是 <code>TreeMap</code> ，类似的，也是使用 key 保存元素，而 value 则统一使用一个常量填充。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> NavigableMap&lt;E,Object&gt; m;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Dummy value to associate with an Object in the backing Map</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object PRESENT = <span class="keyword">new</span> Object();</span><br><span class="line"></span><br><span class="line">TreeSet(NavigableMap&lt;E,Object&gt; m) &#123;</span><br><span class="line">    <span class="keyword">this</span>.m = m;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TreeSet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(<span class="keyword">new</span> TreeMap&lt;E,Object&gt;());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> m.put(e, PRESENT)==<span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Deque"><a href="#Deque" class="headerlink" title="Deque"></a>Deque</h3><p><code>Deque</code> 是 “double ended queue（双端队列）” 的缩写，通常读为 “deck” 。<code>Deque</code> 继承自 <code>Queue</code> ，支持 FIFO（先进先出）操作，也可用作 LIFO（后进先出）堆栈，并且 API 文档中建议我们优先使用此接口而不是使用遗留 <code>Stack</code> 类。</p>
+<h4 id="ArrayDeque"><a href="#ArrayDeque" class="headerlink" title="ArrayDeque"></a>ArrayDeque</h4><p><code>ArrayDeque</code> 基于循环数组实现。没有容量限制，可以按需扩展。<br>用作堆栈时快于 <code>Stack</code> ，在用作队列时快于 <code>LinkedList</code> 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">transient</span> Object[] elements;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第一个元素的索引</span></span><br><span class="line"><span class="keyword">transient</span> <span class="keyword">int</span> head;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下一个要插入的元素索引</span></span><br><span class="line"><span class="keyword">transient</span> <span class="keyword">int</span> tail;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayDeque</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    elements = <span class="keyword">new</span> Object[<span class="number">16</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="LinkedList-1"><a href="#LinkedList-1" class="headerlink" title="LinkedList"></a>LinkedList</h4><p><code>LinkedList</code> 以双向链表实现，既是 <code>List</code> ，也是 <code>Queue</code> 。<br>它是唯一一个允许放入 <code>null</code> 的 <code>Queue</code> 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">transient</span> Node&lt;E&gt; first;</span><br><span class="line"></span><br><span class="line"><span class="keyword">transient</span> Node&lt;E&gt; last;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    E item;</span><br><span class="line">    Node&lt;E&gt; next;</span><br><span class="line">    Node&lt;E&gt; prev;</span><br><span class="line"></span><br><span class="line">    Node(Node&lt;E&gt; prev, E element, Node&lt;E&gt; next) &#123;</span><br><span class="line">        <span class="keyword">this</span>.item = element;</span><br><span class="line">        <span class="keyword">this</span>.next = next;</span><br><span class="line">        <span class="keyword">this</span>.prev = prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u904D_u5386_u64CD_u4F5C"><a href="#u904D_u5386_u64CD_u4F5C" class="headerlink" title="遍历操作"></a>遍历操作</h2><h3 id="u96C6_u5408"><a href="#u96C6_u5408" class="headerlink" title="集合"></a>集合</h3><h4 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h4><p><code>Iterator</code> 是集合的迭代器。<br>需要注意的是，它的光标位于两个元素之间，因此：<br>调用 <code>Iterator.next()</code> 前，一般先判断 <code>Iterator.hasNext()</code> 。<br>而调用 <code>Iterator.remove()</code> 前，则需要先调用 <code>Iterator.next()</code> 。<br>可以这么理解：每一次调用 <code>Iterator.next()</code> 都会 “消耗掉” 一个元素（和 <code>InputStream.read()</code> 类似）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; aList = <span class="keyword">new</span> ArrayList&lt;&gt;(); <span class="comment">// JDK 1.7 菱形语法</span></span><br><span class="line">aList.add(<span class="string">"a"</span>);</span><br><span class="line">aList.add(<span class="string">"b"</span>);</span><br><span class="line">aList.add(<span class="string">"c"</span>);</span><br><span class="line">Iterator&lt;String&gt; iterator = aList.iterator();</span><br><span class="line"><span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">    System.out.println(iterator.next());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于 <code>List</code> 还有更强大的 <code>ListIterator</code> 可以使用。<br><code>Iterator</code> 只能进行正向的遍历，而 <code>ListIterator</code> 则允许按任一方向遍历，并且，还支持 add 、set 操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; aList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">aList.add(<span class="string">"a"</span>);</span><br><span class="line">aList.add(<span class="string">"b"</span>);</span><br><span class="line">aList.add(<span class="string">"c"</span>);</span><br><span class="line"></span><br><span class="line">ListIterator&lt;String&gt; listIterator = aList.listIterator(); <span class="comment">// [a, b, c] and cursor = 0</span></span><br><span class="line"></span><br><span class="line">listIterator.add(<span class="string">"d"</span>); <span class="comment">// [d, a, b, c] and cursor = 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (listIterator.hasNext()) &#123;</span><br><span class="line">    System.out.println(<span class="string">"forward："</span> + listIterator.next());</span><br><span class="line">&#125; <span class="comment">// cursor = 4</span></span><br><span class="line"></span><br><span class="line">listIterator.set(<span class="string">"e"</span>); <span class="comment">// [d, a, b, e] and cursor = 4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (listIterator.hasPrevious()) &#123;</span><br><span class="line">    System.out.println(<span class="string">"backward："</span> + listIterator.previous());</span><br><span class="line">&#125; <span class="comment">// cursor = 0</span></span><br></pre></td></tr></table></figure>
+<h4 id="Enumeration"><a href="#Enumeration" class="headerlink" title="Enumeration"></a>Enumeration</h4><p>在 JDK 1.2 以前，还没有 <code>Iterator</code> 接口，需要使用 <code>Enumeration</code> 进行枚举：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Vector&lt;String&gt; aVector = <span class="keyword">new</span> Vector&lt;&gt;();</span><br><span class="line">aVector.add(<span class="string">"a"</span>);</span><br><span class="line">aVector.add(<span class="string">"b"</span>);</span><br><span class="line">aVector.add(<span class="string">"c"</span>);</span><br><span class="line"><span class="keyword">for</span> (Enumeration&lt;String&gt; e = aVector.elements(); e.hasMoreElements();) &#123;</span><br><span class="line">    System.out.println(e.nextElement());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>相对于 <code>Enumeration</code> ，<code>Iterator</code> 更安全。<br>因为 <code>Iterator</code> 对集合进行遍历时，会阻止其它线程对当前集合进行结构性的修改（例如：add、remove操作，会抛出 <code>ConcurrentModificationException</code> ），也就是所谓的 <strong>“快速失败（fail-fast）”</strong> 。<br>并且，<code>Iterator</code> 允许从集合中删除元素，方法名也更短。</p>
+<h4 id="foreach"><a href="#foreach" class="headerlink" title="foreach"></a>foreach</h4><p>由于 <code>Collection</code> 接口继承自 <code>Iterable</code> 接口，因此它的子类都支持 “foreach” 语句：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; aList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">aList.add(<span class="string">"a"</span>);</span><br><span class="line">aList.add(<span class="string">"b"</span>);</span><br><span class="line">aList.add(<span class="string">"c"</span>);</span><br><span class="line"><span class="keyword">for</span> (String string : aList) &#123;</span><br><span class="line">    System.out.println(string);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Map-1"><a href="#Map-1" class="headerlink" title="Map"></a>Map</h3><p>至于 <code>Map</code> 的遍历，一般是先获取 <code>Map</code> 的集合视图再进行遍历：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">map.put(<span class="string">"a"</span>, <span class="string">"apple"</span>);</span><br><span class="line">map.put(<span class="string">"b"</span>, <span class="string">"banana"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 键值视图</span></span><br><span class="line">Set&lt;Entry&lt;String, String&gt;&gt; entrySet = map.entrySet();</span><br><span class="line"><span class="keyword">for</span> (Entry&lt;String, String&gt; entry : entrySet) &#123;</span><br><span class="line">    System.out.println(<span class="string">"key="</span> + entry.getKey() + <span class="string">", value="</span></span><br><span class="line">            * entry.getValue());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u5DE5_u5177_u7C7B"><a href="#u5DE5_u5177_u7C7B" class="headerlink" title="工具类"></a>工具类</h2><h3 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h3><p><code>Collections</code> 类封装了对集合操作的各种静态方法和常量：</p>
+<ul>
+<li>addAll()</li>
+<li>binarySearch()</li>
+<li>fill()</li>
+<li>sort()</li>
+<li>checkedXxx()</li>
+<li>synchronizedXxx()</li>
+<li>unmodifiableXxx()</li>
+</ul>
+<h3 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h3><p><code>Arrays</code> 类包含用来操作数组（比如排序和搜索）的各种方法：</p>
+<ul>
+<li>binarySearch()</li>
+<li>copyOf()</li>
+<li>copyOfRange()</li>
+<li>fill()</li>
+<li>sort()</li>
+<li>parallelSort()</li>
+<li>parallelPrefix()    // JDK 1.8</li>
+<li>setAll()            // JDK 1.8</li>
+<li>parallelSetAll()    // JDK 1.8</li>
+<li>spliterator()       // JDK 1.8</li>
+<li>stream()            // JDK 1.8</li>
+</ul>
+<p>与 <code>Collection</code> 的 <code>toArray()</code> 方法相对，<code>Arrays</code> 类提供了 <code>asList()</code> 方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; stooges = Arrays.asList(<span class="string">"Larry"</span>, <span class="string">"Moe"</span>, <span class="string">"Curly"</span>);</span><br><span class="line">String[] array = stooges.toArray(<span class="keyword">new</span> String[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
+<h2 id="u5E76_u53D1_u7F16_u7A0B"><a href="#u5E76_u53D1_u7F16_u7A0B" class="headerlink" title="并发编程"></a>并发编程</h2><p>Java 集合框架中大部分的类都是非线程安全的，对于集合的并发编程，要么自己通过锁来控制它们的读写操作，要么使用 Java 自身提供的线程安全的集合类来解决。</p>
+<p>以 <code>List</code> 为例，<code>ArrayList</code> 的实现不是线程安全的，而古老的 <code>Vector</code> 是线程安全的。<br>但是， <code>Vector</code> 的锁的粒度很大（它的方法基本上都加了 <code>synchronized</code> ），每次读写操作都会把列表中的所有元素锁住，产生互斥，这种开销是非常大的。<br>为了解决这个问题，<strong>Java 提供了一种 CopyOnWrite 机制：使得读操作始终能够并发执行，而写操作则是先拷贝一份数组出来修改，等修改完成后，再将它赋给内部的数组引用。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> ReentrantLock lock = <span class="keyword">this</span>.lock;</span><br><span class="line">    lock.lock();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Object[] elements = getArray();</span><br><span class="line">        <span class="keyword">int</span> len = elements.length;</span><br><span class="line">        Object[] newElements = Arrays.copyOf(elements, len + <span class="number">1</span>); <span class="comment">// 拷贝原数组</span></span><br><span class="line">        newElements[len] = e; <span class="comment">// 插入新元素</span></span><br><span class="line">        setArray(newElements); <span class="comment">// 把新数组赋给原数组引用</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        lock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>CopyOnWrite 机制对 “读多写少” 的场景是非常适用的</strong>，但是如果需要频繁的写操作，可能还不如自己直接加锁处理。</p>
+<p>对于 <code>Map</code> ，Java 并没有提供 <code>CopyOnWriteHashMap</code> ，而是使用 <strong>“锁分段”</strong> 技术实现了 <code>ConcurrentHashMap</code> 。<br>其主要原理就是：<strong>首先将容器中的数据进行分区，分成一个个的片段（ Segment ，默认大小为 16），然后再给每一段数据配一把锁，当一个线程访问其中一个段数据的时候，只会占用当前片段的锁，而其他段的数据也就能被其他线程所访问。</strong><br>这样一来，可以减少锁的竞争，并且内在的拷贝操作也不用占用太大的内存。<br><strong>本质上就是为了减小锁的粒度</strong>。</p>
+<p>除此之外， <code>java.util.concurrent</code> 包还提供了很多在并发编程中常用的工具类。<br>例如：</p>
+<ul>
+<li>CopyOnWriteArrayList    // 并发优化的 ArrayList</li>
+<li>CopyOnWriteArraySet     // 并发优化的 ArraySet</li>
+<li>ConcurrentHashMap       // 并发优化的 HashMap</li>
+<li>ConcurrentSkipListMap   // 并发优化的 SortedMap</li>
+<li>ConcurrentLinkedQueue   // 并发优化的 Queue</li>
+<li>LinkedBlockingQueue     // 并发优化的 BlockingQueue</li>
+<li>ArrayBlockingQueue      // 并发优化的 BlockingQueue</li>
+</ul>
+<p>这里暂时不再展开，后续再做研究。</p>
+<h2 id="u66F4_u591A_u5185_u5BB9"><a href="#u66F4_u591A_u5185_u5BB9" class="headerlink" title="更多内容"></a>更多内容</h2><h3 id="Guava"><a href="#Guava" class="headerlink" title="Guava"></a>Guava</h3><p><a href="https://github.com/google/guava" title="Guava" target="_blank" rel="external">Guava</a> 是 Google 的出品的一个类库，包含：集合 [collections] 、缓存 [caching] 、原生类型支持 [primitives support] 、并发库 [concurrency libraries] 、通用注解 [common annotations] 、字符串处理 [string processing] 、I/O 等内容。</p>
+<p>其对集合框架的增强和扩展算是 Guava 最成熟和流行的部分之一。<br>在这里，只列举几个小例子，更多内容，可以到项目主页上去深入了解、学习。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 能够推断范型的静态工厂方法</span></span><br><span class="line">List&lt;TypeThatsTooLongForItsOwnGood&gt; list = Lists.newArrayList();</span><br><span class="line">Map&lt;KeyType, LongishValueType&gt; map = Maps.newLinkedHashMap();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不可修改的集合</span></span><br><span class="line">ImmutableSet digits = ImmutableSet.of(<span class="string">"zero"</span>, <span class="string">"one"</span>, <span class="string">"two"</span>, <span class="string">"three"</span>, <span class="string">"four"</span>, <span class="string">"five"</span>, <span class="string">"six"</span>, <span class="string">"seven"</span>, <span class="string">"eight"</span>, <span class="string">"nine"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 按照字符串长度分组</span></span><br><span class="line">Function&lt;String, Integer&gt; lengthFunction = <span class="keyword">new</span> Function&lt;String, Integer&gt;() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">apply</span><span class="params">(String string)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> string.length();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// Multimap：在 Map 的 value 里面放多个元素</span></span><br><span class="line">ImmutableListMultimap&lt;Integer, String&gt; digitsByLength= Multimaps.index(digits, lengthFunction);</span><br><span class="line"><span class="comment">/*</span><br><span class="line">*  digitsByLength maps:</span><br><span class="line">*  3 =&gt; &#123;"one", "two", "six"&#125;</span><br><span class="line">*  4 =&gt; &#123;"zero", "four", "five", "nine"&#125;</span><br><span class="line">*  5 =&gt; &#123;"three", "seven", "eight"&#125;</span><br><span class="line">*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="u8C23_u8A00"><a href="#u8C23_u8A00" class="headerlink" title="谣言"></a>谣言</h3><p>另外，网上还有一些文章在传：“ JDK 1.7 在语法层面上支持集合”，看上去挺美的。<br>然而，实际情况却是：这个语言特性目前仍未实现！<br>也许在后续的 JDK 版本（Java 9+ ？）中会实现，但是，以下代码在目前可用的 JDK 版本中无法编译通过的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下代码无法编译通过</span></span><br><span class="line"><span class="keyword">final</span> List&lt;Integer&gt; piDigits = [<span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">9</span>];</span><br><span class="line"><span class="keyword">final</span> Set&lt;Integer&gt; primes = &#123; <span class="number">2</span>, <span class="number">7</span>, <span class="number">31</span>, <span class="number">127</span>, <span class="number">8191</span>, <span class="number">131071</span>, <span class="number">524287</span> &#125;;</span><br><span class="line"><span class="keyword">final</span> Map&lt;Integer, String&gt; platonicSolids = &#123; <span class="number">4</span> : <span class="string">"tetrahedron"</span>,</span><br><span class="line">    <span class="number">6</span> : <span class="string">"cube"</span>, <span class="number">8</span> : <span class="string">"octahedron"</span>, <span class="number">12</span> : <span class="string">"dodecahedron"</span>, <span class="number">20</span> : <span class="string">"icosahedron"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>对于集合框架的使用，最关键的是要明确应用场景。<br>不妨考虑以下几个问题：</p>
+<ul>
+<li>是否使用数组就可以满足需求？</li>
+<li>是 Collection ？还是 Map ？</li>
+<li>是否允许存储相同的对象？</li>
+<li>是否需要存储 null ？</li>
+<li>是否需要对集合中对象进行排序？</li>
+<li>是否需要进行有序的迭代？</li>
+<li>是更关注写操作（ add/put/remove ）的效率？还是读操作（ get/contains ）的效率？</li>
+<li>是否需要保证线程安全？</li>
+</ul>
+<h2 id="u53C2_u8003_u6587_u6863"><a href="#u53C2_u8003_u6587_u6863" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li>Java Tutorials：<a href="https://docs.oracle.com/javase/8/docs/technotes/guides/collections/index.html" title="The Collections Framework" target="_blank" rel="external">https://docs.oracle.com/javase/8/docs/technotes/guides/collections/index.html</a></li>
+<li>Java SE API Documentation：<a href="http://docs.oracle.com/javase/8/docs/api/index.html" title="API Specification" target="_blank" rel="external">http://docs.oracle.com/javase/8/docs/api/index.html</a></li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/"> #java </a>
+          
+            <a href="/tags/集合/"> #集合 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/16/Java漫游笔记-09-多线程/">Java漫游笔记-09-多线程</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/02/Java漫游笔记-07-泛型/">Java漫游笔记-07-泛型</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="post-spread">
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      </div>
+    
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="2015/07/03/Java漫游笔记-08-集合/"
+               data-title="Java漫游笔记-08-集合" data-url="http://frankyzhu.github.io/2015/07/03/Java漫游笔记-08-集合/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/12979447?v=3&s=460" alt="Franky Zhu" />
+          <p class="site-author-name">Franky Zhu</p>
+        </div>
+        <p class="site-description motion-element"></p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/frankyzhu" target="_blank">GitHub</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u4EC0_u4E48_u662F_u96C6_u5408"><span class="nav-number">1.</span> <span class="nav-text">什么是集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4F7F_u7528_u96C6_u5408_u6846_u67B6_u7684_u597D_u5904"><span class="nav-number">2.</span> <span class="nav-text">使用集合框架的好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u96C6_u5408_u6846_u67B6_u7684_u5C42_u6B21_u7ED3_u6784"><span class="nav-number">3.</span> <span class="nav-text">集合框架的层次结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4E3B_u8981_u7684_u63A5_u53E3_u548C_u5B9E_u73B0_u7C7B"><span class="nav-number">4.</span> <span class="nav-text">主要的接口和实现类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#List"><span class="nav-number">4.1.</span> <span class="nav-text">List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayList"><span class="nav-number">4.1.1.</span> <span class="nav-text">ArrayList</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedList"><span class="nav-number">4.1.2.</span> <span class="nav-text">LinkedList</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map"><span class="nav-number">4.2.</span> <span class="nav-text">Map</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashMap"><span class="nav-number">4.2.1.</span> <span class="nav-text">HashMap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TreeMap"><span class="nav-number">4.2.2.</span> <span class="nav-text">TreeMap</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set"><span class="nav-number">4.3.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HashSet"><span class="nav-number">4.3.1.</span> <span class="nav-text">HashSet</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TreeSet"><span class="nav-number">4.3.2.</span> <span class="nav-text">TreeSet</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deque"><span class="nav-number">4.4.</span> <span class="nav-text">Deque</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ArrayDeque"><span class="nav-number">4.4.1.</span> <span class="nav-text">ArrayDeque</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LinkedList-1"><span class="nav-number">4.4.2.</span> <span class="nav-text">LinkedList</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u904D_u5386_u64CD_u4F5C"><span class="nav-number">5.</span> <span class="nav-text">遍历操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u96C6_u5408"><span class="nav-number">5.1.</span> <span class="nav-text">集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Iterator"><span class="nav-number">5.1.1.</span> <span class="nav-text">Iterator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Enumeration"><span class="nav-number">5.1.2.</span> <span class="nav-text">Enumeration</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#foreach"><span class="nav-number">5.1.3.</span> <span class="nav-text">foreach</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map-1"><span class="nav-number">5.2.</span> <span class="nav-text">Map</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5DE5_u5177_u7C7B"><span class="nav-number">6.</span> <span class="nav-text">工具类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Collections"><span class="nav-number">6.1.</span> <span class="nav-text">Collections</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Arrays"><span class="nav-number">6.2.</span> <span class="nav-text">Arrays</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5E76_u53D1_u7F16_u7A0B"><span class="nav-number">7.</span> <span class="nav-text">并发编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u66F4_u591A_u5185_u5BB9"><span class="nav-number">8.</span> <span class="nav-text">更多内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Guava"><span class="nav-number">8.1.</span> <span class="nav-text">Guava</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u8C23_u8A00"><span class="nav-number">8.2.</span> <span class="nav-text">谣言</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u603B_u7ED3"><span class="nav-number">9.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u53C2_u8003_u6587_u6863"><span class="nav-number">10.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">Franky Zhu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"codinglike"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+
+</body>
+</html>

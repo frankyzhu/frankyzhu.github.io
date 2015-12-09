@@ -1,0 +1,707 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+
+
+  <meta name="keywords" content="RMI,WebService,java," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?9d3fa8bd2d0f7a011dff9213f64e1124";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> Java漫游笔记-14-RMI和WebService // CodingLike </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">CodingLike</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xqxct_ug9yknr576Y6sb','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Java漫游笔记-14-RMI和WebService
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-08-10
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/java/">java</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/08/10/Java漫游笔记-14-RMI和WebService/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/10/Java漫游笔记-14-RMI和WebService/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p>很多时候，我们应用程序所有的组件都在同一台主机的同一个 JVM 中运行。<br>然而，有的时候，基于一些原因（例如：性能、安全），我们也会把程序的某些部分分别部署在不同的机器上。<br>这时候，我们就不得不考虑这些分布在不同机器上的组件（或是子系统）应如何通信，来共同实现业务功能。<br>在 Java 中，组件间要通信，可以基于消息的方式实现，也可以基于远程调用的方式实现。<br>前面学习过的 TCP/IP 、UDP/IP 编程，就可以实现不同主机间的通信。<br>但是，这样一来，我们就需要处理网络连接、数据收发 以及 Java 对象的序列化等一系列的问题。想想就头大。<br>如果能够取得远程对象的引用就好了，因为这样我们就可以直接调用它的方法，就好像大家都在同一个 JVM 中。<br>这就是 RMI（远程方法调用，Remote Method Invocation）提供给我们的功能。</p>
+<a id="more"></a>
+<h2 id="RMI"><a href="#RMI" class="headerlink" title="RMI"></a>RMI</h2><h3 id="u57FA_u672C_u539F_u7406"><a href="#u57FA_u672C_u539F_u7406" class="headerlink" title="基本原理"></a>基本原理</h3><p>首先，我们要理解两个概念。</p>
+<ul>
+<li>这里说的“远程”，并不仅仅指的是不同的主机之间，在同一台主机的不同虚拟机之间，也属于远程。</li>
+<li>如果一个对象的方法能够在不同的 JVM 之间被调用，那么这个对象就可以称为远程对象(Remote Object)。</li>
+</ul>
+<p>基于 RMI 的应用，通常由服务端程序和客户端程序组成。<br>服务端程序负责创建一些远程对象，并使得对这些远程对象的引用能够被访问。<br>客户端程序则会获取远程对象的引用，并调用这些远程对象所提供的方法。</p>
+<p>其基本原理大致如下：</p>
+<p><img src="/images/RMI.png" alt="RMI" title="RMI"></p>
+<h3 id="u7F16_u7A0B_u6A21_u578B"><a href="#u7F16_u7A0B_u6A21_u578B" class="headerlink" title="编程模型"></a>编程模型</h3><p>基于 RMI 开发一个分布式应用主要遵循以下几个步骤：</p>
+<ol>
+<li>定义远程接口：也就是指定哪些方法能够被客户端远程调用。</li>
+<li>实现远程接口：编写远程接口具体的实现类。</li>
+<li>编写服务器端代码：创建并暴露远程对象，启动远程对象注册表，监听请求。</li>
+<li>编写客户端代码：通过远程注册表的引用，查询并获取远程对象，并调用其方法。</li>
+</ol>
+<h3 id="u53C2_u8003_u4EE3_u7801"><a href="#u53C2_u8003_u4EE3_u7801" class="headerlink" title="参考代码"></a>参考代码</h3><ol>
+<li><p>定义远程接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.rmi.Remote;</span><br><span class="line"><span class="keyword">import</span> java.rmi.RemoteException;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 服务器端对外提供的接口，必须继承自 Remote</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TimeService</span> <span class="keyword">extends</span> <span class="title">Remote</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 方法抛出 RemoteException</span></span><br><span class="line">    <span class="comment">// 远程调用底层涉及网络、IO 操作，因此总是有风险 </span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">now</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现远程接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.rmi.RemoteException;</span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeServiceImpl</span> <span class="keyword">implements</span> <span class="title">TimeService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">now</span><span class="params">()</span> <span class="keyword">throws</span> RemoteException </span>&#123;</span><br><span class="line">        SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd hh:mm:ss"</span>);</span><br><span class="line">        <span class="keyword">return</span> sdf.format(<span class="keyword">new</span> Date());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写服务器端代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.rmi.AlreadyBoundException;</span><br><span class="line"><span class="keyword">import</span> java.rmi.RemoteException;</span><br><span class="line"><span class="keyword">import</span> java.rmi.registry.LocateRegistry;</span><br><span class="line"><span class="keyword">import</span> java.rmi.registry.Registry;</span><br><span class="line"><span class="keyword">import</span> java.rmi.server.UnicastRemoteObject;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RMIServer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> RemoteException,</span><br><span class="line">            AlreadyBoundException </span>&#123;</span><br><span class="line">        <span class="comment">// 远程对象接收调用的端口</span></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> REMOTE_PORT = <span class="number">54321</span>;</span><br><span class="line">        <span class="comment">// 远程对象在注册表中绑定的名称</span></span><br><span class="line">        <span class="keyword">final</span> String REMOTE_NAME = <span class="string">"TimeService"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 注册表接受请求的端口</span></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> REGISTRY_PORT = <span class="number">1099</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建远程对象</span></span><br><span class="line">        TimeService timeService = <span class="keyword">new</span> TimeServiceImpl();</span><br><span class="line">        <span class="comment">// 暴露该远程对象，以便能够接收传入的调用</span></span><br><span class="line">        <span class="comment">// 这会通过动态代理，自动生成 stub 类</span></span><br><span class="line">        <span class="comment">// 如果端口设置为 0 ，则会使用匿名端口</span></span><br><span class="line">        UnicastRemoteObject.exportObject(timeService, REMOTE_PORT);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建并启动远程对象注册表</span></span><br><span class="line">        Registry registry = LocateRegistry.createRegistry(REGISTRY_PORT);</span><br><span class="line">        <span class="comment">// 将远程对象绑定到注册表，使得客户端可以查找到</span></span><br><span class="line">        registry.bind(REMOTE_NAME, timeService);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写客户端代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.rmi.NotBoundException;</span><br><span class="line"><span class="keyword">import</span> java.rmi.RemoteException;</span><br><span class="line"><span class="keyword">import</span> java.rmi.registry.LocateRegistry;</span><br><span class="line"><span class="keyword">import</span> java.rmi.registry.Registry;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RMIClient</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> RemoteException,</span><br><span class="line">            NotBoundException </span>&#123;</span><br><span class="line">        <span class="comment">// 在默认注册表端口 1099 获取远程注册表的引用</span></span><br><span class="line">        Registry registry = LocateRegistry.getRegistry(<span class="string">"localhost"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> String REMOTE_NAME = <span class="string">"TimeService"</span>;</span><br><span class="line">        <span class="comment">// 根据名称获取远程对象的引用</span></span><br><span class="line">        <span class="comment">// 实际上是动态生成的代理对象（Stub）</span></span><br><span class="line">        TimeService timeService = (TimeService) registry.lookup(REMOTE_NAME);</span><br><span class="line">        System.out.println(timeService.getClass().getName()); <span class="comment">// com.sun.proxy.$Proxy0</span></span><br><span class="line">        System.out.println(timeService.toString()); <span class="comment">// TimeServiceImpl_Stub[...]</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 调用其方法</span></span><br><span class="line">        String now = timeService.now();</span><br><span class="line">        System.out.println(<span class="string">"现在是北京时间："</span> + now);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="u8981_u70B9"><a href="#u8981_u70B9" class="headerlink" title="要点"></a>要点</h3><ul>
+<li>远程对象除了 <code>Remote</code> 接口，也可以实现其它的接口，但其它接口里声明的方法只在本地 JVM 可用，不能被远程调用。</li>
+<li>远程接口声明的方法，必须抛出 <code>RemoteException</code> ，原因是远程调用的底层会涉及网络、IO 等操作，因此总是有风险。 </li>
+<li>远程方法的参数和返回值，只允许是基本数据类型、可序列化的对象。原因也很简单，因为要进行序列化操作。</li>
+<li>在 JDK 1.5 之前，对于每个远程接口，我们都需要使用 RMI 编译器（rmic）手动生成 Stub 和 Skeleton 类，并打包到客户端。但是 JDK 1.5 之后，RMI 工具使用了动态代理，会在运行时动态生成代理对象，使用起来更简单。实际上，如果你现在还调用 rmic 的话，会出现以下警告信息：<blockquote>
+<p>  警告: 为 JRMP 生成和使用骨架及静态存根已过时。骨架不再必要, 而静态存根已由动态生成的存根取代。建议用户不再使用rmic来生成骨架和静态存根。</p>
+</blockquote>
+</li>
+<li>RMI 注册机制是一个简单的远程对象命名服务，就好像是一个共享的电话本，客户端通过远程对象的名字可以查到远程对象（实际上是 Stub）的引用。</li>
+<li>RMI 框架采用分布式垃圾收集机制(DGC，Distributed Garbage Collection)来管理远程对象的生命周期。其主要规则为：当一个远程对象没有任何本地变量引用和远程引用时，这个远程对象才可以被垃圾回收器回收。如果远程对象希望 GC 回收前做一些安全退出的操作（例如：释放资源），可以实现 <code>java.rmi.server.Unreferenced</code> 接口，并在 <code>unreferenced()</code>方法中执行相关操作。当 RMI 框架监测到一个远程对象没有任何远程引用时，这个方法。</li>
+</ul>
+<h2 id="WebService"><a href="#WebService" class="headerlink" title="WebService"></a>WebService</h2><p>除了 RMI ，JDK 1.6 之后，也集成了 WebService 。因此，我们也可以通过这种方式实现远程调用。</p>
+<h3 id="u57FA_u672C_u539F_u7406-1"><a href="#u57FA_u672C_u539F_u7406-1" class="headerlink" title="基本原理"></a>基本原理</h3><p>WebService 基于 XML 进行信息交换，相对 RMI 而言，它具有跨平台、跨语言的优势。</p>
+<p>其基本原理大致如下：</p>
+<p><img src="/images/WebService.png" alt="WebService" title="WebService"></p>
+<h3 id="u7F16_u7A0B_u6A21_u578B-1"><a href="#u7F16_u7A0B_u6A21_u578B-1" class="headerlink" title="编程模型"></a>编程模型</h3><p>基于 WebService 开发应用，主要有以下几个步骤：</p>
+<ol>
+<li>定义远程接口：也就是指定哪些方法能够被客户端远程调用。</li>
+<li>实现远程接口：编写远程接口具体的实现类，并通过 <code>@WebService</code> 注解，配置对外暴露的 WebService 的名称，以及生成的 stub 代码的类名和包名等信息。</li>
+<li>编写服务器端代码：发布 WebService 。</li>
+<li>生成客户端辅助代码：使用 wsimport 工具，解析 WSDL ，并生成辅助代码。</li>
+<li>编写客户端代码：导入辅助代码，并调用其方法。</li>
+</ol>
+<h3 id="u53C2_u8003_u4EE3_u7801-1"><a href="#u53C2_u8003_u4EE3_u7801-1" class="headerlink" title="参考代码"></a>参考代码</h3><ol>
+<li><p>定义远程接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TimeService</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 获取远程服务器的时间</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">now</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现远程接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.jws.WebService;</span><br><span class="line"><span class="keyword">import</span> javax.jws.soap.SOAPBinding;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 标记为 WebService 的实现类</span></span><br><span class="line"><span class="comment">// 可以配置生成的 stub 代码的类名和包名等信息</span></span><br><span class="line"><span class="annotation">@WebService</span>(name = <span class="string">"TimeService"</span>, serviceName = <span class="string">"RemoteTime"</span>, targetNamespace = <span class="string">"http://stub.webservice.codinglike.com"</span>)</span><br><span class="line"><span class="annotation">@SOAPBinding</span>(style = SOAPBinding.Style.RPC)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeServiceImpl</span> <span class="keyword">implements</span> <span class="title">TimeService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">now</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd hh:mm:ss"</span>);</span><br><span class="line">        <span class="keyword">return</span> sdf.format(<span class="keyword">new</span> Date());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写服务器端代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.xml.ws.Endpoint;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebServiceServer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 发布 WebService</span></span><br><span class="line">        <span class="comment">// 客户端可以通过 http://localhost:54321/timeService?wsdl 访问 WSDL</span></span><br><span class="line">        Endpoint.publish(<span class="string">"http://localhost:54321/timeService"</span>,</span><br><span class="line">                <span class="keyword">new</span> TimeServiceImpl());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成客户端辅助代码：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsimport -keep http://localhost:54321/timeService?wsdl</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写客户端代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.codinglike.webservice.stub.RemoteTime;</span><br><span class="line"><span class="keyword">import</span> com.codinglike.webservice.stub.TimeService;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebServiceClient</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 先使用 wsimport -keep http://localhost:54321/timeService?wsdl 生成辅助代码</span></span><br><span class="line">        <span class="comment">// 再基于辅助代码实现业务功能</span></span><br><span class="line">        RemoteTime stub = <span class="keyword">new</span> RemoteTime();</span><br><span class="line">        TimeService timeService = stub.getTimeServicePort();</span><br><span class="line"></span><br><span class="line">        String now = timeService.now();</span><br><span class="line">        System.out.println(<span class="string">"现在是北京时间："</span> + now);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="u8981_u70B9-1"><a href="#u8981_u70B9-1" class="headerlink" title="要点"></a>要点</h3><ul>
+<li>WebService 使用 SOAP（简单对象访问协议，Simple Object Access Protocol）来传输的数据。</li>
+<li>WSDL （网络服务描述语言，Web Services Description Language）用来描述如何访问具体的接口。</li>
+</ul>
+<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>以上内容介绍了基于 Java 自身技术实现远程通信的两种方式： RMI 和 WebService 。它们的共同点在于，都封装底层网络通信的细节，使用起来比较简单。但是，RMI 是 Java 独有的，而 WebService 是跨语言的。<br>除了这两种方式，还有一些第三方提供的技术和框架可以使用，例如：Spring Remoting 、JBoss Remoting 等。<br>但是，从目前的趋势来看，现在的应用架构更倾向于，让客户端直接通过 HTTP 与服务器进行通信。在 API 的设计风格上，RESTful 的架构越来越流行。而就传输的数据格式而言，相对于 XML 也更喜欢使用 JSON 。</p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RMI/"> #RMI </a>
+          
+            <a href="/tags/WebService/"> #WebService </a>
+          
+            <a href="/tags/java/"> #java </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/08/12/Java漫游笔记-15-JVM/">Java漫游笔记-15-JVM</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/07/Java漫游笔记-13-注解/">Java漫游笔记-13-注解</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="post-spread">
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      </div>
+    
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="2015/08/10/Java漫游笔记-14-RMI和WebService/"
+               data-title="Java漫游笔记-14-RMI和WebService" data-url="http://frankyzhu.github.io/2015/08/10/Java漫游笔记-14-RMI和WebService/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/12979447?v=3&s=460" alt="Franky Zhu" />
+          <p class="site-author-name">Franky Zhu</p>
+        </div>
+        <p class="site-description motion-element"></p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/frankyzhu" target="_blank">GitHub</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RMI"><span class="nav-number">1.</span> <span class="nav-text">RMI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u57FA_u672C_u539F_u7406"><span class="nav-number">1.1.</span> <span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u7F16_u7A0B_u6A21_u578B"><span class="nav-number">1.2.</span> <span class="nav-text">编程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u53C2_u8003_u4EE3_u7801"><span class="nav-number">1.3.</span> <span class="nav-text">参考代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u8981_u70B9"><span class="nav-number">1.4.</span> <span class="nav-text">要点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebService"><span class="nav-number">2.</span> <span class="nav-text">WebService</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u57FA_u672C_u539F_u7406-1"><span class="nav-number">2.1.</span> <span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u7F16_u7A0B_u6A21_u578B-1"><span class="nav-number">2.2.</span> <span class="nav-text">编程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u53C2_u8003_u4EE3_u7801-1"><span class="nav-number">2.3.</span> <span class="nav-text">参考代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u8981_u70B9-1"><span class="nav-number">2.4.</span> <span class="nav-text">要点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u603B_u7ED3"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">Franky Zhu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"codinglike"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+
+</body>
+</html>

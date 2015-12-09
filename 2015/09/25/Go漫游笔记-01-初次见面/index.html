@@ -1,0 +1,783 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+
+
+  <meta name="keywords" content="go,环境配置," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?9d3fa8bd2d0f7a011dff9213f64e1124";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> Go漫游笔记-01-初次见面 // CodingLike </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">CodingLike</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xqxct_ug9yknr576Y6sb','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Go漫游笔记-01-初次见面
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-09-25
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/go/">go</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/09/25/Go漫游笔记-01-初次见面/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/25/Go漫游笔记-01-初次见面/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p><img src="/images/GoFiveYears.jpg" alt="Go 编程语言" title="Go 编程语言"></p>
+<h2 id="What_is_Go"><a href="#What_is_Go" class="headerlink" title="What is Go"></a>What is Go</h2><p>官方的介绍很简单：</p>
+<blockquote>
+<p>  Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.</p>
+</blockquote>
+<p>翻译过来就是：</p>
+<blockquote>
+<p>  Go 是一个开源的编程语言，它能够让我们更加容易地构建简单、可靠、高效的软件。</p>
+</blockquote>
+<p>从这个非常简短的介绍中，我们能够知道：</p>
+<ul>
+<li>首先，Go 是开源的，也就是说任何人都可以查看 Go 语言的源代码，并且，它采用的协议是 BSD ，这是一个相对自由的协议，对商业友好。</li>
+<li>其次，Go 语言的目标是用来构建简单、可靠、高效的软件。在接下来的 “旅程” 中，我们不妨以此为参照，从各个方面来考量一下它，看看它是否能够兑现自己的承诺。</li>
+</ul>
+<a id="more"></a>
+<h3 id="u53D1_u5C55_u8F68_u8FF9"><a href="#u53D1_u5C55_u8F68_u8FF9" class="headerlink" title="发展轨迹"></a>发展轨迹</h3><p>Go 语言从正式发布第一个版本，至今已经快有 6 年头了。<br>6 岁，对于人类而言，还是一个乳臭未干的年龄。<br>事实上，在编程语言界，这也相差无几。<br>如果我们按照年龄，把目前还比较活跃的语言来排个序，大概是这样子的：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>编程语言</th>
+<th>出生</th>
+<th>年龄（2015）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>C</td>
+<td>1972</td>
+<td>43</td>
+</tr>
+<tr>
+<td>2</td>
+<td>C++</td>
+<td>1983</td>
+<td>32</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Objective-C</td>
+<td>1983</td>
+<td>32</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Python</td>
+<td>1991</td>
+<td>24</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Java</td>
+<td>1995</td>
+<td>20</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Javascript</td>
+<td>1995</td>
+<td>20</td>
+</tr>
+<tr>
+<td>5</td>
+<td>PHP</td>
+<td>1995</td>
+<td>20</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Ruby</td>
+<td>1995</td>
+<td>20</td>
+</tr>
+<tr>
+<td>9</td>
+<td>C#</td>
+<td>2000</td>
+<td>15</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Node.js</td>
+<td>2009</td>
+<td>6</td>
+</tr>
+<tr>
+<td>10</td>
+<td>GO</td>
+<td>2009</td>
+<td>6</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Swift</td>
+<td>2014</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>可以看出来，Go 还算是非常年轻的 :-)</p>
+<p>以下是 Go 发展过程中几个比较重要的里程碑：</p>
+<ul>
+<li>09/2007：开始设计。</li>
+<li>11/2009：正式对外发布第一个版本（发布后不久就获得了 TIOBE Hall of Fame ，也就是年度编程语言）。</li>
+<li>03/2012：发布第一个正式版本 Go 1 。</li>
+</ul>
+<p>目前（09/2015）最新的版本是 Go 1.5.1 。<br>其在 TIOBE 排名是：第 44 位，份额为：0.254% 。</p>
+<h2 id="Why_Go"><a href="#Why_Go" class="headerlink" title="Why Go"></a>Why Go</h2><p>计算机技术发展到今天，被开发出来的编程语言已经非常之多，各种语言之争在社区中也屡见不鲜。<br>那么，<strong>我们为什么还需要 Go 这样的一门语言呢？或者说，我们为什么要选择 Go ？</strong><br>对于这个问题，Go 语言的设计者之一——罗布·派克（ Rob Pike ，也是 Unix 小组的成员 ）曾说道：</p>
+<blockquote>
+<p>  我们开发 Go ，是因为近 10 年来开发系统程序之难让我们有点沮丧。这时候 Go 来拯救我们啦！</p>
+</blockquote>
+<p>这句话背后的野心很大，很明显，Go 语言的设计者希望 Go 能够取缔现在主流的编程语言，一统江湖。<br>但这最终能否实现，还有待时间去证明。</p>
+<p>作为一名开发者，我们更关心：<strong>Go 究竟能解决什么问题？</strong></p>
+<p>在介绍 Go 的资料里面，我们经常会看到各种各样的关键词。而这些关键词则体现了 Go 语言的特性、设计思想。<br>下面就以一些常见的关键词为例，并针对它们做了一点粗浅的思考，接下来，我们会一直带着这些问题来学习 Go 。</p>
+<ul>
+<li>Easy<br>Go 的语法和语义设计是否足够清晰、简洁，易于上手？<br>库的实现是否足够丰富，便于使用？<br>编译生成的程序是否容易部署运行？</li>
+<li>Fast<br>是否具有更快的编译速度？<br>是否具有更高的运行效率？</li>
+<li>Fun<br>它的趣味性体现在什么地方？</li>
+<li>Productive<br>它是如何使程序员更具生产力的？</li>
+<li>Reliable<br>在安全方面，Go 都做哪些考虑？具体的解决方案是什么？</li>
+<li>Concurrent<br>对并发编程的支持，相比现在主流的编程语言有什么不同？</li>
+<li>Garbage-collected<br>在内存管理方面，它的垃圾收集机制又有什么特别之处？</li>
+<li>Build fast at scale<br>它的编译机制是怎么样的？</li>
+</ul>
+<h2 id="u73AF_u5883_u914D_u7F6E"><a href="#u73AF_u5883_u914D_u7F6E" class="headerlink" title="环境配置"></a>环境配置</h2><p>说了这么多，还是在纸上谈兵。<br>要想真正了解 Go 还是得老老实实地码几行代码才行。<br>在这之前，我们首先要配置好 Go 语言的开发环境。</p>
+<ol>
+<li>下载 Go 发行版<br>对于初学者而言，从源码安装 Go 还是有一点难度的，因此，我们首选下载二进制包。<br>以 Windows 用户为例：<br>在 Go 官方网站下载相应的 zip 包后，解压至：<code>C:\Go</code> 目录。</li>
+<li><p>配置环境变量</p>
+<ul>
+<li><p><strong>新建</strong>系统变量 <strong>GOROOT</strong><br>变量值：<code>C:\Go</code>（即 Go 的安装目录）</p>
+</li>
+<li><p><strong>编辑</strong>系统变量 <strong>path</strong><br>在变量值头部插入：<code>%GOROOT%\bin;</code>（不要漏掉末尾的分号“;”）</p>
+</li>
+</ul>
+</li>
+<li><p>测试<br>在 cmd 窗口中执行：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go verson</span><br></pre></td></tr></table></figure>
+<p>如果配置正确，则会显示正确的 Go 版本信息。</p>
+</li>
+</ol>
+<h2 id="u7B2C_u4E00_u4E2A_Go__u7A0B_u5E8F"><a href="#u7B2C_u4E00_u4E2A_Go__u7A0B_u5E8F" class="headerlink" title="第一个 Go 程序"></a>第一个 Go 程序</h2><p>可以使用任意一种文本编辑器，编写 Go 源代码，这里取名为 <code>hello.go</code> ：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> main() &#123;</span><br><span class="line">    fmt.Println(<span class="string">"Hello, world!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接着，就可以在 cmd 中调用 go 工具去运行它：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go run hello.go</span><br></pre></td></tr></table></figure>
+<p>屏幕中会显示：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello, world!</span><br></pre></td></tr></table></figure>
+<p>目前看起来还是挺简单的吧。<br>就开发工具的使用而言，Go 相比 Java 要略微简单一些，因为它“没有”编译（ javac ）的步骤。并且，在当前工作目录下，我们也看不到任何的中间文件和最终的可执行文件。<br>实际上，这只是 go 的 <code>run</code> 命令把编译、链接和运行 3 个步骤合并成 1 步了。<br>如果只是想编译而不运行，可以使用 go 工具的 <code>build</code> 命令。</p>
+<h2 id="u66F4_u591A_u5185_u5BB9"><a href="#u66F4_u591A_u5185_u5BB9" class="headerlink" title="更多内容"></a>更多内容</h2><ul>
+<li>Go 官网地址：<a href="https://golang.org/" title="Go 官网地址" target="_blank" rel="external">https://golang.org/</a> （需要翻qiang）</li>
+<li>Go GitHub 地址：<a href="https://github.com/golang/go" title="Go GitHub 地址" target="_blank" rel="external">https://github.com/golang/go</a></li>
+<li>Go 中文文档：<a href="http://zh-golang.appspot.com/" title="Go 中文文档" target="_blank" rel="external">http://zh-golang.appspot.com/</a></li>
+<li>Go 中文指南：<a href="http://go-tour-zh.appspot.com/welcome/1" title="Go 中文指南" target="_blank" rel="external">http://go-tour-zh.appspot.com/welcome/1</a></li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/go/"> #go </a>
+          
+            <a href="/tags/环境配置/"> #环境配置 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/15/Go漫游笔记-02-类型/">Go漫游笔记-02-类型</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/12/Java漫游笔记-15-JVM/">Java漫游笔记-15-JVM</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="post-spread">
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      </div>
+    
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="2015/09/25/Go漫游笔记-01-初次见面/"
+               data-title="Go漫游笔记-01-初次见面" data-url="http://frankyzhu.github.io/2015/09/25/Go漫游笔记-01-初次见面/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/12979447?v=3&s=460" alt="Franky Zhu" />
+          <p class="site-author-name">Franky Zhu</p>
+        </div>
+        <p class="site-description motion-element"></p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/frankyzhu" target="_blank">GitHub</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What_is_Go"><span class="nav-number">1.</span> <span class="nav-text">What is Go</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u53D1_u5C55_u8F68_u8FF9"><span class="nav-number">1.1.</span> <span class="nav-text">发展轨迹</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Why_Go"><span class="nav-number">2.</span> <span class="nav-text">Why Go</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u73AF_u5883_u914D_u7F6E"><span class="nav-number">3.</span> <span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u7B2C_u4E00_u4E2A_Go__u7A0B_u5E8F"><span class="nav-number">4.</span> <span class="nav-text">第一个 Go 程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u66F4_u591A_u5185_u5BB9"><span class="nav-number">5.</span> <span class="nav-text">更多内容</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">Franky Zhu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"codinglike"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+
+</body>
+</html>

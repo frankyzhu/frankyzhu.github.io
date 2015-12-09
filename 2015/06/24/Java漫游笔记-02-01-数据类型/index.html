@@ -1,0 +1,787 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+
+
+  <meta name="keywords" content="java,类型," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?9d3fa8bd2d0f7a011dff9213f64e1124";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> Java漫游笔记-02-01-数据类型 // CodingLike </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">CodingLike</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xqxct_ug9yknr576Y6sb','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Java漫游笔记-02-01-数据类型
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-06-24
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/java/">java</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/06/24/Java漫游笔记-02-01-数据类型/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/24/Java漫游笔记-02-01-数据类型/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <h2 id="u57FA_u672C_u6570_u636E_u7C7B_u578B"><a href="#u57FA_u672C_u6570_u636E_u7C7B_u578B" class="headerlink" title="基本数据类型"></a>基本数据类型</h2><ul>
+<li><p>数据类型长度是固定的，与操作系统无关。</p>
+</li>
+<li><p>没有任何 <code>unsigned</code> 类型，也就是都包含负数。</p>
+</li>
+<li><p>强烈建议在使用 <code>long</code> 和 <code>float</code> 类型时，显式声明后缀（并且是大写的后缀：<code>L</code>、<code>D</code>）。</p>
+<p>因为：<br>没有后缀的浮点数，例如：3.14，默认为 <code>double</code> 类型。<br>没有后缀的整数，例如：1024，默认为 <code>int</code> 类型。</p>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>不要直接使用浮点数进行运算。可以考虑将其转换成整型再进行计算。</p>
+<p>当你执行 <code>System.out.println(1.3-1.2)</code> 时，你会惊奇的发现，结果不是 <strong>0.1</strong> 也不是 <strong>0.10000000000000000</strong>，而是 <strong>0.10000000000000009</strong> （或者是其他相近的字符串，例如：<strong>0.09999999999999987</strong>）！<br>这是因为二进制无法精确的表示 1/10 ，就像十进制也没办法精确表示 1/3 一样。</p>
+<p>如果需要精确运算，可以使用 <code>java.math.BigInteger</code> 和 <code>java.math.BigDecimal</code>。</p>
+<p>Java 为了保证浮点数算术运算的可移植性，最初规定了浮点数的中间计算都会进行截断。<br>例如：<br>计算 <code>double r = x * y / z</code> 时，会先计算 <code>x * y</code> ，得到的结果截断成 64 位，然后再除以 <code>z</code> 。<br>这样的方式显然会丢失一部分精度，但是可以保证运算结果的可移植性。</p>
+<p>但是，为了使计算结果更加精确，现在的虚拟机默认允许，<strong>中间计算结果采用扩展精度</strong>。<br>也就是说，如果你的 CPU 使用 80 浮点数寄存器，那么 <code>x * y</code> 的结果会存储到 80 位，然后再进行计算。<br>这样会得到一个更精确的结果，但是在不同的硬件平台上，同样的代码所执行的结果可能会不一致。</p>
+<p><code>strictfp</code> 这个关键字（目前我还没有没有使用过），它可以用来修饰类、接口或者是方法，强制要求虚拟机使用严格的浮点数计算方法（也就是第一种方法）。</p>
+</li>
+<li><p>对于二元运算符，会先把两边的变量，转换成相同类型（转换的顺序为：<code>double</code> - <code>float</code> - <code>long</code> - <code>int</code>），再做运算。</p>
+<p>因此，保证参与运算的数值类型一致，可以避免很多莫名其妙的错误。</p>
+<p>范围小的基本类型转换为范围大的基本类型，编译器会自动加宽。<br>对于可能丢失精度的合法转换，请慎重使用！<br>如需强制转换，务必考虑结果是否会溢出，否则结果将不可预料。<br>例如：<code>(byte) 128 == (byte) -128</code> ！</p>
+<p>不同类型的存储要求和取值范围：<br><strong>整型</strong>取值公式：<strong>-2<sup>n-1</sup> ~ 2<sup>n-1</sup> - 1</strong>（n 是存储位数，n-1，减的就是符号位）<br><strong>浮点型</strong>取值公式：比较复杂，可以查阅 <strong>IEEE 754</strong> 浮点数算术标准</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>存储位数（n）</th>
+<th>取值范围</th>
+<th>缺省值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>byte</td>
+<td>8  bit = 1 byte</td>
+<td>-128 ~ 127</td>
+<td>0</td>
+</tr>
+<tr>
+<td>short</td>
+<td>16 bit = 2 byte</td>
+<td>-32,768 ~ 32,767</td>
+<td>0</td>
+</tr>
+<tr>
+<td>int</td>
+<td>32 bit = 4 byte</td>
+<td>-2,147,483,648 ~ 2,147,483,647 （约21亿）</td>
+<td>0</td>
+</tr>
+<tr>
+<td>long</td>
+<td>64 bit = 8 byte</td>
+<td>-9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807</td>
+<td>0L</td>
+</tr>
+<tr>
+<td>float</td>
+<td>32 bit = 4 byte</td>
+<td>2<sup>-149</sup> ~ (2-2<sup>-23</sup>)*2<sup>127</sup>（精度6-7位）</td>
+<td>0.0F</td>
+</tr>
+<tr>
+<td>double</td>
+<td>64 bit = 8 byte</td>
+<td>2<sup>-1074</sup> ~ (2-2<sup>-52</sup>)*2<sup>1023</sup>（精度15-16位）</td>
+<td>0.0D</td>
+</tr>
+<tr>
+<td>char</td>
+<td>16 bit = 2 byte</td>
+<td>\u0000’ ~ ‘\uffff’ （0-65,535）</td>
+<td>\u0000’</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>1  bit</td>
+<td>false，true</td>
+<td>false</td>
+</tr>
+</tbody>
+</table>
+<p>数据类型之间的转换关系：<br><img src="/images/数据类型转换关系.png" alt="数据类型转换关系"></p>
+<ul>
+<li><p>在实际工作中我<strong>很少使用</strong> <code>short</code>、<code>float</code>、<code>char</code> 类型。</p>
+</li>
+<li><p>尽量<strong>不要使用</strong>非十进制表示方法，因为不够直观：</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>进制</th>
+<th>前缀</th>
+<th>实例</th>
+<th>十进制值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>二进制（JDK 1.7 后才有）</td>
+<td>0b</td>
+<td>0b10</td>
+<td>2</td>
+</tr>
+<tr>
+<td>八进制</td>
+<td>0</td>
+<td>010</td>
+<td>8</td>
+</tr>
+<tr>
+<td>十六进制</td>
+<td>0x</td>
+<td>0x10</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>JDK 1.7 以后还可以使用下划线分隔数字，暂时还没用到</p>
+<p>例如：<code>100_100_100 = 100100100</code></p>
+</li>
+</ul>
+<h2 id="u5305_u88C5_u7C7B"><a href="#u5305_u88C5_u7C7B" class="headerlink" title="包装类"></a>包装类</h2><p>首先，包装类是 <code>final</code> 类, 不可继承：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Integer</span> <span class="keyword">extends</span> <span class="title">Number</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Integer</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其次，一旦构造了包装器，就不允许改变它的值：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> value;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>在基本类型和包装类相互转换时，实际上是使用了包装类的构造方法和 <code>xxxValue()</code> 方法。</p>
+<p>所谓的： <strong>Auto-Boxing</strong> 和 <strong>UnBoxing</strong>（自动装箱，拆箱 ），也就是编译器在背后默默地帮你做了这些事情。<br>例如：</p>
+<p><strong>装箱</strong>，<code>int</code> 自动转换为 <code>Integer</code> ：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer integer = <span class="number">1024</span>;</span><br></pre></td></tr></table></figure>
+<p>相当于：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Integer integer = <span class="keyword">new</span> Integer(<span class="number">1024</span>);</span><br></pre></td></tr></table></figure>
+<p>关于自动装箱，还有一个地方需要注意的：<strong>基本类型可以先加宽，然后转为宽类型的包装类，但是不能直接转换</strong>。</p>
+<p><strong>拆箱</strong>，<code>Integer</code> 自动转换为 <code>int</code> ：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = integer;</span><br></pre></td></tr></table></figure>
+<p>相当于：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = integer.intValue();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>利用包装类还可以实现字符串和基本类型的转换。</p>
+<p>例如：<br>int 转换为 String：<code>String s = String.valueOf(1024);</code><br>String 转换为 int：<code>int i = Integer.parseInt(s);</code></p>
+<p>说到这里，或许你会想， <code>int</code> 转换为 <code>String</code> ，直接这样不是更简单：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String s = <span class="string">""</span> + <span class="number">1024</span>;</span><br></pre></td></tr></table></figure>
+<p>实际上，如果你知道 <code>String</code> 是怎么重载 <code>+</code> 运算符的话，你就不会这么用了。<br>上面的代码，相当于：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder bulider = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">bulider.append(String.valueOf(<span class="string">""</span>));</span><br><span class="line">bulider.append(String.valueOf(<span class="number">1024</span>));</span><br><span class="line">String s = bulider.toString();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>包装类的对象和其他所有类的对象一样，缺省值也是 null 。</p>
+<p>在 <code>==</code>  面前也是<strong>类类平等</strong>。<br>不要轻易尝试去趟 <code>integerA == integerB</code> 这样的坑。<br>因为，不同包装类的 <code>valueOf()</code> 方法实现也是很不一样的，有兴趣的同学，可以翻它们的源代码看看。</p>
+</li>
+</ul>
+<p>总的来说，很多地方我们不可避免的需要使用到包装类。<br>例如：在集合中。<br>但是，如果我们滥用包装类，由于存在自动拆装箱的机制，还有可能会产生一些性能问题。<br>因此，我的原则是：<strong>能不用包装类，就不用</strong>。</p>
+<h2 id="u5927_u6570_u503C"><a href="#u5927_u6570_u503C" class="headerlink" title="大数值"></a>大数值</h2><p>前面已经提到浮点数的精度问题，一般在商业计算中，会要求使用 <code>BigDecimal</code> 来保证精度。<br><code>BigDecimal</code> 的 API 很简单。加减乘除都封装好了，不难理解。</p>
+<h3 id="u820D_u5165_u6A21_u5F0F"><a href="#u820D_u5165_u6A21_u5F0F" class="headerlink" title="舍入模式"></a>舍入模式</h3><p>看看下面的表格保证你就清楚了。<br><img src="/images/BigDecimal舍入模式.png" alt="BigDecimal舍入模式"></p>
+<p>银行家舍入法的口诀是，<strong>“四舍六入，遇五择偶”</strong>。<br>其要点是：遇到 5 的时候总是向最接近于它的偶数舍入。<br>如果需要进行一系列的舍入操作，这种方式可以<strong>减少累积的偏差</strong>。</p>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/"> #java </a>
+          
+            <a href="/tags/类型/"> #类型 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/06/26/Java漫游笔记-02-02-运算符/">Java漫游笔记-02-02-运算符</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/23/Java漫游笔记-01-环境配置/">Java漫游笔记-01-环境配置</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="post-spread">
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      </div>
+    
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="2015/06/24/Java漫游笔记-02-01-数据类型/"
+               data-title="Java漫游笔记-02-01-数据类型" data-url="http://frankyzhu.github.io/2015/06/24/Java漫游笔记-02-01-数据类型/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/12979447?v=3&s=460" alt="Franky Zhu" />
+          <p class="site-author-name">Franky Zhu</p>
+        </div>
+        <p class="site-description motion-element"></p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/frankyzhu" target="_blank">GitHub</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u57FA_u672C_u6570_u636E_u7C7B_u578B"><span class="nav-number">1.</span> <span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5305_u88C5_u7C7B"><span class="nav-number">2.</span> <span class="nav-text">包装类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5927_u6570_u503C"><span class="nav-number">3.</span> <span class="nav-text">大数值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u820D_u5165_u6A21_u5F0F"><span class="nav-number">3.1.</span> <span class="nav-text">舍入模式</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">Franky Zhu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"codinglike"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+
+</body>
+</html>

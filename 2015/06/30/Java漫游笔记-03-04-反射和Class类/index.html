@@ -1,0 +1,672 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+
+
+  <meta name="keywords" content="Class,java,反射," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?9d3fa8bd2d0f7a011dff9213f64e1124";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> Java漫游笔记-03-04-反射和Class类 // CodingLike </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">CodingLike</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xqxct_ug9yknr576Y6sb','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Java漫游笔记-03-04-反射和Class类
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-06-30
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/java/">java</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/06/30/Java漫游笔记-03-04-反射和Class类/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/30/Java漫游笔记-03-04-反射和Class类/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <blockquote>
+<p>  在运行期分析类和使用类的能力称之为反射。</p>
+</blockquote>
+<h2 id="Class_u7C7B"><a href="#Class_u7C7B" class="headerlink" title="Class类"></a>Class类</h2><p>要理解和使用反射，需要先认识一下 <code>Class</code> 类和 <code>Class</code> 对象。<br>这个 <code>Class</code> 类和 <code>class</code> 关键字可不同，<code>Class</code> 对象是与之相对应的对象在运行时的类型标识，是程序访问该对象的类型数据的外部接口。<br>简单来讲，就是：<br>在 Java 程序运行时，对于任意的一个类或者是对象，我们都能够通过 <code>Class</code> 对象来获取它的类名、属性和方法等信息。<br>在 API Doc 中，有如下描述：</p>
+<blockquote>
+<p>  <code>Class</code> 类的实例表示正在运行的 Java 应用程序中的类和接口。<br>  枚举是一种类，注释是一种接口。<br>  数组也是一种类，所有具有相同元素类型和维数的数组都共享该 <code>Class</code> 对象。<br>  基本的 Java 类型（ <code>boolean</code> 、<code>byte</code> 、<code>char</code> 、<code>short</code> 、<code>int</code> 、<code>long</code> 、<code>float</code> 和 <code>double</code> ）和关键字 <code>void</code> 也表示为 <code>Class</code> 对象。</p>
+</blockquote>
+<p><code>Class</code> 类没有公共构造方法，因此不能显式地构造一个 <code>Class</code> 对象。<br><code>Class</code> 对象是在类加载阶段由 JVM 调用类加载器（ClassLoader）中的 <code>defineClass()</code> 方法自动构造的。<br>另外，<code>Class</code> 对象还有点特殊：<strong>它是存放在方法区的</strong>，而不是存放在 Java 堆中。</p>
+<p><code>Class</code> 对象可以通过以下几种方法获取：</p>
+<ul>
+<li><code>object.getClass()</code></li>
+<li><code>ClassName.class</code></li>
+<li><code>Class.forName(String className)</code></li>
+</ul>
+<p><code>Class</code> 类还是泛型的：<code>Class&lt;T&gt;</code> ，例如：<code>String.class</code> 实际上是 <code>Class&lt;String&gt;</code> 的一个对象。</p>
+<a id="more"></a>
+<h2 id="u53CD_u5C04"><a href="#u53CD_u5C04" class="headerlink" title="反射"></a>反射</h2><h3 id="u5206_u6790_u7C7B"><a href="#u5206_u6790_u7C7B" class="headerlink" title="分析类"></a>分析类</h3><h4 id="u83B7_u53D6_u7C7B_u540D"><a href="#u83B7_u53D6_u7C7B_u540D" class="headerlink" title="获取类名"></a>获取类名</h4><p>使用 <code>String getName()</code> 方法可以获取此 <code>Class</code> 对象所表示的实体（类、接口、数组类、基本类型或 <code>void</code> ）名称。<br>数组的类名比较怪异，由表示该数组嵌套深度的 <code>[</code> 字符和元素类型编码组成。</p>
+<h4 id="u83B7_u53D6_u5305"><a href="#u83B7_u53D6_u5305" class="headerlink" title="获取包"></a>获取包</h4><p>使用 <code>Package getPackage()</code> 可以获取类的包。</p>
+<h4 id="u83B7_u53D6_u5B9E_u73B0_u7684_u63A5_u53E3"><a href="#u83B7_u53D6_u5B9E_u73B0_u7684_u63A5_u53E3" class="headerlink" title="获取实现的接口"></a>获取实现的接口</h4><p>使用 <code>Class&lt;?&gt;[] getInterfaces()</code> 可以确定实现的接口。</p>
+<h4 id="u83B7_u53D6_u7C7B_u7684_u4FEE_u9970_u7B26"><a href="#u83B7_u53D6_u7C7B_u7684_u4FEE_u9970_u7B26" class="headerlink" title="获取类的修饰符"></a>获取类的修饰符</h4><p>使用 <code>int getModifiers()</code> 可以获取以整数编码的 Java 语言修饰符，因此还需要使用 <code>Modifier</code> 类提供了 <code>static</code> 方法和常量，对类和成员访问修饰符进行解码。</p>
+<h4 id="u83B7_u53D6_u5C5E_u6027"><a href="#u83B7_u53D6_u5C5E_u6027" class="headerlink" title="获取属性"></a>获取属性</h4><p>使用 <code>Field[] getFields()</code> 可以获取所有 <code>public</code> 属性。<br>使用 <code>Field[] getDeclaredFields()</code> 可以获取所有方法，包括公共、保护、默认（包）访问和私有字段，但不包括继承的字段。<br>还可以获取指定的属性：<br><code>Field getDeclaredField(String name)</code><br><code>Field getField(String name)</code></p>
+<h4 id="u83B7_u53D6_u65B9_u6CD5"><a href="#u83B7_u53D6_u65B9_u6CD5" class="headerlink" title="获取方法"></a>获取方法</h4><p>使用 <code>Method[] getMethods()</code> 获取所有 <code>public</code> 成员方法。<br>使用 <code>Method[] getDeclaredMethods()</code> 可以获取所有方法，包括公共、保护、默认（包）访问和私有方法，但不包括继承的方法。<br>同样可以获取指定的方法：<br><code>Method getMethod(String name, Class&lt;?&gt;... parameterTypes)</code><br><code>Method getDeclaredMethod(String name, Class&lt;?&gt;... parameterTypes)</code></p>
+<h4 id="u83B7_u53D6_u6784_u9020_u65B9_u6CD5"><a href="#u83B7_u53D6_u6784_u9020_u65B9_u6CD5" class="headerlink" title="获取构造方法"></a>获取构造方法</h4><p>使用 <code>Constructor&lt;?&gt;[] getConstructors()</code> 获取所有 <code>public</code> 构造方法。<br>使用 <code>Constructor&lt;?&gt;[] getDeclaredConstructors()</code> 获取所有构造方法，包括公共、保护、默认（包）访问和私有构造方法。<br>获取制定的构造方法：<br><code>Constructor&lt;T&gt; getConstructor(Class&lt;?&gt;... parameterTypes)</code><br><code>Constructor&lt;T&gt; getDeclaredConstructor(Class&lt;?&gt;... parameterTypes)</code></p>
+<h3 id="u4F7F_u7528_u7C7B"><a href="#u4F7F_u7528_u7C7B" class="headerlink" title="使用类"></a>使用类</h3><h4 id="u6784_u9020_u4E00_u4E2A_u5B9E_u4F8B"><a href="#u6784_u9020_u4E00_u4E2A_u5B9E_u4F8B" class="headerlink" title="构造一个实例"></a>构造一个实例</h4><p>使用 <code>Object</code> 的 <code>newInstance()</code> 方法，<strong>它会自动去调用当前类的无参构造方法</strong>。如果不可访问，会拋异常的。<br><strong>如果需要调用带参的构造方法，那么就要使用 <code>Constructor</code> 的 <code>newInstance()</code> 方法了</strong>。</p>
+<p>如果不存在安全管理器，在获取了类的信息后，还可以通过 <code>Field</code> 、<code>Method</code> 、<code>Constructor</code> 的 <code>setAccessible()</code> 方法来突破访问权限的控制，来完成更多的操作。</p>
+<h4 id="u4FEE_u6539_u5C5E_u6027_u7684_u503C"><a href="#u4FEE_u6539_u5C5E_u6027_u7684_u503C" class="headerlink" title="修改属性的值"></a>修改属性的值</h4><p>使用 <code>Field</code> 的 <code>set(Object obj, Object value)</code> 或者是 <code>setXxx(Object obj, Xxx value)</code> 方法。</p>
+<h4 id="u8C03_u7528_u4EFB_u610F_u65B9_u6CD5"><a href="#u8C03_u7528_u4EFB_u610F_u65B9_u6CD5" class="headerlink" title="调用任意方法"></a>调用任意方法</h4><p>使用 <code>Method</code> 的 <code>Object invoke(Object obj, Object... args)</code> 方法。<br><strong>这个方法的返回值是 <code>Object</code> 类型</strong>，因此，也就意味着往往需要我们自己进行类型转换，这是它的弱点。</p>
+<h4 id="u66F4_u591A_u5185_u5BB9"><a href="#u66F4_u591A_u5185_u5BB9" class="headerlink" title="更多内容"></a>更多内容</h4><p>可以参考 <code>java.lang.reflect</code> 包，它提供了反射编程所需的类和接口。</p>
+<h2 id="u5B9E_u4F8B"><a href="#u5B9E_u4F8B" class="headerlink" title="实例"></a>实例</h2><ol>
+<li><p>调用本地方法，使用 <code>ClassLoader</code> 来加载创建出 <code>Class</code> 对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class action = Class.forName(<span class="string">"ActionClass.class"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>校验 <code>ActionClass</code> 类是否为 <code>public</code> 类型，以确定类的执行权限。<br>如果不是 <code>public</code> 会拋 <code>SecurityException</code> 。<br>调用 <code>getDeclaredMethods()</code> 来获取 <code>Class</code> 中的所有方法（第一次调用时会缓存方法集合），找到签名一致的方法则复制返回一个 <code>Method</code> 对象。<br>否则，继续扫描父类、父接口中是否有该方法。<br>如果都没有，则抛出 <code>NoSuchMethodException</code> 。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Method method = action.getMethod(<span class="string">"execute"</span>, <span class="keyword">null</span>);  <span class="comment">// 获取指定的方法</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用本地方法获取构造器，校验构造器对象的权限，并执行 <code>newInstance()</code> 方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object object = action.newInstance();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">method.invoke(object, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Class/"> #Class </a>
+          
+            <a href="/tags/java/"> #java </a>
+          
+            <a href="/tags/反射/"> #反射 </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/02/Java漫游笔记-04-接口和内部类/">Java漫游笔记-04-接口和内部类</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/29/Java漫游笔记-03-03-Object类/">Java漫游笔记-03-03-Object类</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="post-spread">
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      </div>
+    
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="2015/06/30/Java漫游笔记-03-04-反射和Class类/"
+               data-title="Java漫游笔记-03-04-反射和Class类" data-url="http://frankyzhu.github.io/2015/06/30/Java漫游笔记-03-04-反射和Class类/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/12979447?v=3&s=460" alt="Franky Zhu" />
+          <p class="site-author-name">Franky Zhu</p>
+        </div>
+        <p class="site-description motion-element"></p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/frankyzhu" target="_blank">GitHub</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Class_u7C7B"><span class="nav-number">1.</span> <span class="nav-text">Class类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u53CD_u5C04"><span class="nav-number">2.</span> <span class="nav-text">反射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5206_u6790_u7C7B"><span class="nav-number">2.1.</span> <span class="nav-text">分析类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u83B7_u53D6_u7C7B_u540D"><span class="nav-number">2.1.1.</span> <span class="nav-text">获取类名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u83B7_u53D6_u5305"><span class="nav-number">2.1.2.</span> <span class="nav-text">获取包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u83B7_u53D6_u5B9E_u73B0_u7684_u63A5_u53E3"><span class="nav-number">2.1.3.</span> <span class="nav-text">获取实现的接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u83B7_u53D6_u7C7B_u7684_u4FEE_u9970_u7B26"><span class="nav-number">2.1.4.</span> <span class="nav-text">获取类的修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u83B7_u53D6_u5C5E_u6027"><span class="nav-number">2.1.5.</span> <span class="nav-text">获取属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u83B7_u53D6_u65B9_u6CD5"><span class="nav-number">2.1.6.</span> <span class="nav-text">获取方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u83B7_u53D6_u6784_u9020_u65B9_u6CD5"><span class="nav-number">2.1.7.</span> <span class="nav-text">获取构造方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4F7F_u7528_u7C7B"><span class="nav-number">2.2.</span> <span class="nav-text">使用类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u6784_u9020_u4E00_u4E2A_u5B9E_u4F8B"><span class="nav-number">2.2.1.</span> <span class="nav-text">构造一个实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u4FEE_u6539_u5C5E_u6027_u7684_u503C"><span class="nav-number">2.2.2.</span> <span class="nav-text">修改属性的值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u8C03_u7528_u4EFB_u610F_u65B9_u6CD5"><span class="nav-number">2.2.3.</span> <span class="nav-text">调用任意方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u66F4_u591A_u5185_u5BB9"><span class="nav-number">2.2.4.</span> <span class="nav-text">更多内容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B9E_u4F8B"><span class="nav-number">3.</span> <span class="nav-text">实例</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">Franky Zhu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"codinglike"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+
+</body>
+</html>

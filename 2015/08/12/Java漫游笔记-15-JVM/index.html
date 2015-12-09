@@ -1,0 +1,809 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mist">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.3"/>
+
+
+
+
+  <meta name="keywords" content="JVM,java," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.3" />
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    analytics: {
+      google: ''
+    },
+    sidebar: 'post'
+  };
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?9d3fa8bd2d0f7a011dff9213f64e1124";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <title> Java漫游笔记-15-JVM // CodingLike </title>
+</head>
+
+<body>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <div id="header" class="header">
+      <div class="header-inner">
+        <h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">CodingLike</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<div class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            <i class="menu-item-icon icon-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+<form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xqxct_ug9yknr576Y6sb','2.0.0');
+</script>
+
+<div class="site-search-toggle"></div>
+    </div>
+  
+</div>
+
+
+      </div>
+    </div>
+
+    <div id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
+              Java漫游笔记-15-JVM
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-08-12
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <a href="/categories/java/">java</a>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/08/12/Java漫游笔记-15-JVM/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/12/Java漫游笔记-15-JVM/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <p>JVM（Java 虚拟机，Java Virtual Machine）是整个 Java 平台的基石，是 Java 实现平台无关（不依赖于特定硬件和操作系统）的关键部分，是 Java 语言的运行平台，也是保障用户机器免受恶意代码损害的保护屏障。<br>要学好、用好 Java ，JVM 是我们绕不过去的一道槛。</p>
+<a id="more"></a>
+<h2 id="JDK__u3001JRE__u3001JVM__u7684_u5173_u7CFB"><a href="#JDK__u3001JRE__u3001JVM__u7684_u5173_u7CFB" class="headerlink" title="JDK 、JRE 、JVM 的关系"></a>JDK 、JRE 、JVM 的关系</h2><p>Java 相关的概念很多，例如：JDK 、JRE 、JVM 就是我们经常提及，又容易混淆概念。<br>在学习 JVM 之前，我们首先要弄清楚 JDK 、JRE 、JVM 之间的关系。<br>在 Java 官方的 <a href="http://docs.oracle.com/javase/8/docs/index.html" title="Java Developer Guides" target="_blank" rel="external">Developer Guides</a> 中，有这样的描述：</p>
+<blockquote>
+<p>  Oracle has two products that implement Java Platform Standard Edition (Java SE) 8: Java SE Development Kit (JDK) 8 and Java SE Runtime Environment (JRE) 8.<br>  JDK 8 is a superset of JRE 8, and contains everything that is in JRE 8, plus tools such as the compilers and debuggers necessary for developing applets and applications. JRE 8 provides the libraries, the Java Virtual Machine (JVM), and other components to run applets and applications written in the Java programming language. Note that the JRE includes components not required by the Java SE specification, including both standard and non-standard Java components.<br>  The following conceptual diagram illustrates the components of Oracle’s Java SE products:<br>  <img src="/images/JavaSE产品组件.png" alt="JavaSE产品组件" title="JavaSE产品组件"></p>
+</blockquote>
+<p>简单来说就是：<br>JDK（Java 开发工具包，Java Develop Kit） 和 JRE（Java 运行环境，Java Runtime Environment，） 都实现了 Java 标准版。<br>JDK 是 JRE 的超集，它除了包含 JRE 中所有的组件，还包含编译器、调试器等工具。因为这些工具很多都是采用 Java 语言编写的（例如：javac.exe、javap.exe 等，大多是 %JAVA_HOME%/lib/tools.jar 类库的一层薄包装），所以，JDK 自身也需要附带一套 JRE 。<br>JRE 是 Java 应用的运行环境，主要包含 JVM 和 Java 的核心类库。需要注意的是 JRE 包含的组件不局限于 Java SE 规范，它还包含其它的组件（例如：JavaFX）。<br>JVM 是 JRE 的一部分，其主要工作是解释自己的指令集（即字节码）并转换到本地 CPU 的指令集。JVM 是平台相关的，也正是因为它的存在，屏蔽了这种相关性，使得 Java 语言能够做到跨平台运行。</p>
+<p>串起来就是：<br>我们参照 Java API 编写代码，通过 JDK 中的编译工具（javac.exe）将 Java 源代码文件（.java）编译成 Java 字节码文件（.class），在 JRE 上运行 Java 字节码，再由 JVM 转换成具体平台的机器指令。</p>
+<p><img src="/images/Java工作机制.png" alt="Java工作机制" title="Java工作机制"></p>
+<h2 id="JVM__u67B6_u6784"><a href="#JVM__u67B6_u6784" class="headerlink" title="JVM 架构"></a>JVM 架构</h2><p>让我们首先来看一下 JVM 的整体架构：</p>
+<p><img src="/images/JVM架构.png" alt="JVM架构" title="JVM架构"></p>
+<p>其主要的组成部分有：</p>
+<ul>
+<li>类加载器（Class Loader）<br>JVM 使用类加载器把字节码加载到内存中。</li>
+<li>运行时数据区（Run-Time Data Areas）<ul>
+<li>程序计数器（Program Counter Register）<br>程序计数器存放当前方法中将要执行的 JVM 指令地址。<br>在任意确定的一个时刻，一个 JVM 线程只会执行一个方法中的一条指令。<br>需要注意的是，如果当前方法是本地方法，那么，程序计数器保存的值为 <code>undefined</code> 。</li>
+<li>JVM 栈（Java Virtual Machine Stack）<br>每一个 JVM 线程都有自己私有的 JVM 栈。<br>这个栈与线程同时创建，用于存储栈帧。<ul>
+<li>栈帧（Frame）<br>栈帧是用来存储局部变量表、操作数栈、动态链接和方法出口等信息的数据结构。<br>栈帧随着方法调用而创建，随着方法结束（无论是正常完成还是异常完成）而销毁。<br>因此，我们<strong>可以把栈帧看作是当前正在执行的方法</strong>。<br>每一个方法被调用直至执行完成的过程，就对应着一个栈帧在 JVM 栈中从入栈到出栈的过程。<br>栈帧是线程本地私有的数据，不同线程中的栈帧互不可见。<ul>
+<li>局部变量表（Local Variables）<br>局部变量表是用来存储方法内局部变量的空间.<br>JVM 使用局部变量表来完成方法调用时的参数传递，并且，如果是实例方法，那么第 0 个局部变量肯定是 this 。<br>局部变量表所需的内存空间会在编译期间完成分配。</li>
+<li>操作数栈（Operand Stack）<br>操作数栈用来存储 JVM 指令操作所需要用到的数据，这些数据可能来自局部变量，也可能来自常量，还有可能是虚拟机指令操作的结果数据。</li>
+<li>动态链接（Dynamic Linking）<br>每一个栈帧内部都包含一个指向运行时常量池的引用，来支持当前方法的代码实现动态链接。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Java 堆（Java Heap）<br>Java 堆在虚拟机启动的时候就被创建，是供所有类实例和数组对象分配内存的区域，可供各个线程共享。<br>Java 堆由垃圾收集器（Garbage Collector）管理。<br>如果从内存回收的角度看，还可以细分为：新生代（包括：Eden Space、Survivor 0 Space 和 Survivor 1 Space）和旧生代。</li>
+<li>方法区（Method Area）<br>方法区在虚拟机启动的时候被创建，存储了每一个类的结构信息，例如：运行时常量池、Class 对象、类变量等等。<br>JVM 规范中提到：虽然方法区是堆的逻辑组成部分，但是简单的虚拟机实现可以选择在这个区域不实现垃圾收集。<ul>
+<li>运行时常量池（Runtime Constant Pool）<br>运行时常量池是方法区的一部分，在类和接口被加载到虚拟机后，对应的运行时常量池就被创建出来。<br>包括：编译期可知的各种字面量和符号引用，以及运行时产生的新常量。</li>
+</ul>
+</li>
+<li>本地方法栈（Native Method Stack）<br>本地方法栈用来支持使用到本地方法的执行。<br>功能上，和 JVM 栈类似，有的虚拟机（例如：HotSopt VM） 甚至会采用一样的实现。</li>
+</ul>
+</li>
+<li>垃圾收集器（Garbage Collector）<br>垃圾收集器是 JVM 内存回收的具体实现，会自动地回收内存。</li>
+<li>执行引擎<br>执行引擎负责执行 JVM 指令。</li>
+</ul>
+<h2 id="u6E90_u4EE3_u7801_u7F16_u8BD1_u673A_u5236"><a href="#u6E90_u4EE3_u7801_u7F16_u8BD1_u673A_u5236" class="headerlink" title="源代码编译机制"></a>源代码编译机制</h2><p>Java 源代码编译器虽然不属于 JVM 的范畴，但是，JVM 所加载和运行的字节码都是由源代码编译器生成的，因此，我们还是很有必要，弄清楚源代码编译器究竟是如何把源代码转换成字节码的。</p>
+<p>JVM 规范精确定义了 class 文件的结构，但是，它并没有说明如何把符合 Java 语言规范的源文件转换成符合 JVM 规范的 class 文件。JDK 的厂商需要自行实现源代码编译器。而 Oracle 提供的源代码编译器就是 javac （其实现的代码位于 <code>com.sun.tools.javac</code> 包下）。<br>使用 javac 编译源代码，主要有以下几个步骤：</p>
+<ol>
+<li>词法分析<br>首先，我们需要读取 Java 源代码，识别出哪些字符是合法的关键字，哪些是用户自定义的名称，哪些是符号等等。这些提取出来的内容，我们一般统称为标记（Token）。</li>
+<li>语法分析<br>接下来，为了方便后续的操作，我们还会把这些标记按照结构化的方式进行组织，也就是会生成一个抽象的语法树。</li>
+<li>填充符号表<br>但是，光有源代码的标识和结构信息，还是不足以完成整个编译的，因此，我们还需要把这些标记所涉及的相关信息（例如：变量的名称、类型）都保存起来，这里我们所用到的数据结构就是符号表。<br>另外，在这一步，还会添加默认的构造方法。 </li>
+<li>注解处理<br>在 JDK 1.5 以后，Java 提供了对注解的支持。而有些注解会对代码进行操作，这时候就需要重新进行前面的步骤，来生成更准确的信息。 </li>
+<li>语义分析<br>经过前面几步，我们已经得到了一个结构正确的抽象语法树，但是源程序是否符合逻辑还需要进一步分析。主要包括：<ul>
+<li>标注检查<br>检查变量使用前是否声明，类型是否匹配，进行常量折叠操作等等。</li>
+<li>数据及控制流分析<br>检查局部变量在使用前是否进行初始化，非运行异常是否处理，去除无用代码等等。</li>
+<li>解语法糖<br>例如：自动拆装箱、for-each 转换等等。</li>
+</ul>
+</li>
+<li>生成字节码<br>最后，在完成少量的代码添加和转换后，源代码编译器会将生成的信息转换成字节码，并按照 class 文件格式输出。</li>
+</ol>
+<p><img src="/images/源代码编译机制.png" alt="源代码编译机制" title="源代码编译机制"></p>
+<p>编译生成的字节码使用二进制格式来表示，并且通常以文件的形式存储，因此一般称之为 class 文件。<br>class 文件是一个完整的自描述文件，精确定义了类或接口的信息，其结构如下（其中 <code>u</code> 表示无符号数，数字为字节长度，<code>_info</code> 表示是复合结构，例如：表）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ClassFile &#123;</span><br><span class="line">    u4             magic; <span class="comment">// 魔数，标识符，是固定值：0xCAFEBABE</span></span><br><span class="line">    u2             minor_version; <span class="comment">// 副版本号</span></span><br><span class="line">    u2             major_version; <span class="comment">// 主版本号</span></span><br><span class="line">    u2             constant_pool_count; <span class="comment">// 常量池计数器</span></span><br><span class="line">    cp_info        constant_pool[constant_pool_count-<span class="number">1</span>]; <span class="comment">// 常量池，包含所有字符串常量、 类或接口名、字段名和其它常量</span></span><br><span class="line">    u2             access_flags; <span class="comment">// 访问标志，表示某个类或者接口的访问权限及基础属性</span></span><br><span class="line">    u2             this_class; <span class="comment">// 当前类索引，对应常量池中的某个值</span></span><br><span class="line">    u2             super_class; <span class="comment">// 直接父类索引，对应常量池中的某个值</span></span><br><span class="line">    u2             interfaces_count; <span class="comment">// 接口计数器，表示当前类或接口的直接父接口数量</span></span><br><span class="line">    u2             interfaces[interfaces_count]; <span class="comment">// 接口表</span></span><br><span class="line">    u2             fields_count; <span class="comment">// 字段计数器</span></span><br><span class="line">    field_info     fields[fields_count]; <span class="comment">// 字段表，不包括从父类或父接口继承的部分</span></span><br><span class="line">    u2             methods_count; <span class="comment">// 方法计数器</span></span><br><span class="line">    method_info    methods[methods_count]; <span class="comment">// 方法表，不包括从父类或父接口继承的部分</span></span><br><span class="line">    u2             attributes_count; <span class="comment">// 属性计数器</span></span><br><span class="line">    attribute_info attributes[attributes_count]; <span class="comment">// 属性表，包括预先定义属性和自定义属性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例如，我们定义这样一个类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String NAME = <span class="string">"App"</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(NAME);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译后生成的 class 文件是一组以 8 个字节为单元的二进制流，如果使用二进制编辑器打开，可以看到如下内容：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cafe babe 0000 0034 0021 0700 0201 0003&#10;4170 7007 0004 0100 106a 6176 612f 6c61&#10;6e67 2f4f 626a 6563 7401 0004 4e41 4d45&#10;0100 124c 6a61 7661 2f6c 616e 672f 5374&#10;7269 6e67 3b01 000d 436f 6e73 7461 6e74&#10;5661 6c75 6508 0002 0100 063c 696e 6974&#10;3e01 0003 2829 5601 0004 436f 6465 0a00&#10;0300 0d0c 0009 000a 0100 0f4c 696e 654e&#10;756d 6265 7254 6162 6c65 0100 124c 6f63&#10;616c 5661 7269 6162 6c65 5461 626c 6501&#10;0004 7468 6973 0100 054c 4170 703b 0100&#10;0372 756e 0900 1400 1607 0015 0100 106a&#10;6176 612f 6c61 6e67 2f53 7973 7465 6d0c&#10;0017 0018 0100 036f 7574 0100 154c 6a61&#10;7661 2f69 6f2f 5072 696e 7453 7472 6561&#10;6d3b 0a00 1a00 1c07 001b 0100 136a 6176&#10;612f 696f 2f50 7269 6e74 5374 7265 616d&#10;0c00 1d00 1e01 0007 7072 696e 746c 6e01&#10;0015 284c 6a61 7661 2f6c 616e 672f 5374&#10;7269 6e67 3b29 5601 000a 536f 7572 6365&#10;4669 6c65 0100 0841 7070 2e6a 6176 6100&#10;2100 0100 0300 0000 0100 1900 0500 0600&#10;0100 0700 0000 0200 0800 0200 0100 0900&#10;0a00 0100 0b00 0000 2f00 0100 0100 0000&#10;052a b700 0cb1 0000 0002 000e 0000 0006&#10;0001 0000 0001 000f 0000 000c 0001 0000&#10;0005 0010 0011 0000 0001 0012 000a 0001&#10;000b 0000 0037 0002 0001 0000 0009 b200&#10;1312 08b6 0019 b100 0000 0200 0e00 0000&#10;0a00 0200 0000 0600 0800 0700 0f00 0000&#10;0c00 0100 0000 0900 1000 1100 0000 0100&#10;1f00 0000 0200 20</span><br></pre></td></tr></table></figure>
+<p>显然，这样的十六进制表示，我们是很难直接读懂。不过，JDK 为我们提供了 javap 工具，可以用来生成更友好的文件格式——非正式的“虚拟机汇编语言（Virtual Machine Assembly Language）”格式。 </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javap -c -s -l -verbose App &#62; App.txt</span><br></pre></td></tr></table></figure>
+<p>javap 生成的内容如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">Classfile /CLASS_PATH/App.class</span><br><span class="line">  Last modified 2015-8-15; size 503 bytes</span><br><span class="line">  MD5 checksum 1f983972ae029d766ef0001abf8e0fc1</span><br><span class="line">  Compiled from "App.java"</span><br><span class="line">public class App</span><br><span class="line">  //  Class 文件的格式版本号</span><br><span class="line">  minor version: 0</span><br><span class="line">  major version: 52</span><br><span class="line">  // 类的访问权限及基础属性</span><br><span class="line">  flags: ACC_PUBLIC, ACC_SUPER</span><br><span class="line">// 常量池，存放所有字符串常量、 类或接口名、字段名和其它常量。</span><br><span class="line">Constant pool:</span><br><span class="line">   #1 = Class              #2             // App</span><br><span class="line">   #2 = Utf8               App</span><br><span class="line">   #3 = Class              #4             // java/lang/Object</span><br><span class="line">   #4 = Utf8               java/lang/Object</span><br><span class="line">   #5 = Utf8               NAME</span><br><span class="line">   #6 = Utf8               Ljava/lang/String;</span><br><span class="line">   #7 = Utf8               ConstantValue</span><br><span class="line">   #8 = String             #2             // App</span><br><span class="line">   #9 = Utf8               &lt;init&gt;</span><br><span class="line">  #10 = Utf8               ()V</span><br><span class="line">  #11 = Utf8               Code</span><br><span class="line">  #12 = Methodref          #3.#13         // java/lang/Object."&lt;init&gt;":()V</span><br><span class="line">  #13 = NameAndType        #9:#10         // "&lt;init&gt;":()V</span><br><span class="line">  #14 = Utf8               LineNumberTable</span><br><span class="line">  #15 = Utf8               LocalVariableTable</span><br><span class="line">  #16 = Utf8               this</span><br><span class="line">  #17 = Utf8               LApp;</span><br><span class="line">  #18 = Utf8               run</span><br><span class="line">  #19 = Fieldref           #20.#22        // java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">  #20 = Class              #21            // java/lang/System</span><br><span class="line">  #21 = Utf8               java/lang/System</span><br><span class="line">  #22 = NameAndType        #23:#24        // out:Ljava/io/PrintStream;</span><br><span class="line">  #23 = Utf8               out</span><br><span class="line">  #24 = Utf8               Ljava/io/PrintStream;</span><br><span class="line">  #25 = Methodref          #26.#28        // java/io/PrintStream.println:(Ljava/lang/String;)V</span><br><span class="line">  #26 = Class              #27            // java/io/PrintStream</span><br><span class="line">  #27 = Utf8               java/io/PrintStream</span><br><span class="line">  #28 = NameAndType        #29:#30        // println:(Ljava/lang/String;)V</span><br><span class="line">  #29 = Utf8               println</span><br><span class="line">  #30 = Utf8               (Ljava/lang/String;)V</span><br><span class="line">  #31 = Utf8               SourceFile</span><br><span class="line">  #32 = Utf8               App.java</span><br><span class="line">&#123;</span><br><span class="line">  // 常量值属性</span><br><span class="line">  public static final java.lang.String NAME;</span><br><span class="line">    descriptor: Ljava/lang/String;</span><br><span class="line">    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL</span><br><span class="line">    ConstantValue: String App</span><br><span class="line"></span><br><span class="line">  // 语义分析时生成的默认构造方法</span><br><span class="line">  public App();</span><br><span class="line">    descriptor: ()V</span><br><span class="line">    flags: ACC_PUBLIC</span><br><span class="line">    Code:</span><br><span class="line">      stack=1, locals=1, args_size=1</span><br><span class="line">         0: aload_0</span><br><span class="line">         1: invokespecial #12                 // Method java/lang/Object."&lt;init&gt;":()V</span><br><span class="line">         4: return</span><br><span class="line">      LineNumberTable:</span><br><span class="line">        line 1: 0</span><br><span class="line">      LocalVariableTable:</span><br><span class="line">        Start  Length  Slot  Name   Signature</span><br><span class="line">            0       5     0  this   LApp;</span><br><span class="line"></span><br><span class="line">  // run() 方法的元数据</span><br><span class="line">  public void run();</span><br><span class="line">    descriptor: ()V</span><br><span class="line">    flags: ACC_PUBLIC</span><br><span class="line">    Code:</span><br><span class="line">      // 操作数栈的深度，局部变量表的容量，参数的个数</span><br><span class="line">      // 实例方法，第一个局部变量为 this </span><br><span class="line">      stack=2, locals=1, args_size=1</span><br><span class="line">         // 字节码指令表</span><br><span class="line">         0: getstatic     #19                 // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">         3: ldc           #8                  // String App</span><br><span class="line">         5: invokevirtual #25                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V</span><br><span class="line">         8: return</span><br><span class="line">      // 源文件行号与字节码指令偏移量的对应关系</span><br><span class="line">      LineNumberTable:</span><br><span class="line">        line 6: 0</span><br><span class="line">        line 7: 8</span><br><span class="line">      // 局部变量表</span><br><span class="line">      LocalVariableTable:</span><br><span class="line">        // 这里可以解释为什么 locals=1, args_size=1</span><br><span class="line">        Start  Length  Slot  Name   Signature</span><br><span class="line">            0       9     0  this   LApp;</span><br><span class="line">&#125;</span><br><span class="line">SourceFile: "App.java"</span><br></pre></td></tr></table></figure>
+<p>从 Java 源代码到字节码，看似只是在存储格式上迈进了一小步，然而，这却是编程语言发展的一大步。<br>这种字节码，正是 Java 语言实现平台无关的关键所在。<br>从更宽泛的角度来讲，我们也可以认为 Java 虚拟机与 Java 语言并没有必然的联系，它只与特定的二进制文件（即Class 文件）格式所关联。<br>任何语言（例如：Groovy 、 Scala ）只要产生了有效的 Class 文件，就能够被 Java 虚拟机加载、执行。</p>
+<h2 id="u7C7B_u52A0_u8F7D_u673A_u5236"><a href="#u7C7B_u52A0_u8F7D_u673A_u5236" class="headerlink" title="类加载机制"></a>类加载机制</h2><p>在我们成功编译源代码之后，就要开始考虑如何把 class 文件加载到 JVM 。</p>
+<p>JVM 加载类的过程可以分为三个步骤：加载、链接与初始化。</p>
+<p><img src="/images/类加载机制.png" alt="类加载机制" title="类加载机制"></p>
+<ol>
+<li><p>加载<br>加载阶段，主要做 3 件事：</p>
+<ul>
+<li>根据类的全限定名查找类或接口的二进制字节流。</li>
+<li>将字节流转换成方法区的运行时数据结构。</li>
+<li>在内存中（方法区）生成一个代表这个类的 <code>Class</code> 对象。<br>其中，“根据类的全限定名查找类或接口的二进制字节流”，就需要用到类加载器（ClassLoader）。JVM 规范定义了两种类加载器，分别是：引导类加载器和用户自定义类加载器。<br>引导类加载器（Bootstrap ClassLoader），使用 C++ 实现（对于 HotSpot 虚拟机而言），是 JVM 的一部分，完全受 JVM 控制。<br>而每个用户自定义的类加载器都应该是抽象类 <code>ClassLoader</code> 的某个子类的实例，采用 Java 实现，独立于 JVM 之外。<br>从层次结构上，大致如此：</li>
+</ul>
+<p><img src="/images/ClassLoader层次结构.png" alt="ClassLoader层次结构" title="ClassLoader层次结构"></p>
+<p>我们可以通过代码来简单验证一下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">         ClassLoader appClassLoader = ClassLoader.getSystemClassLoader();</span><br><span class="line">         System.out.println(appClassLoader); <span class="comment">// sun.misc.Launcher$AppClassLoader</span></span><br><span class="line">         </span><br><span class="line">         ClassLoader extClassLoader = appClassLoader.getParent();</span><br><span class="line">         System.out.println(extClassLoader); <span class="comment">// sun.misc.Launcher$ExtClassLoader</span></span><br><span class="line">         </span><br><span class="line">         ClassLoader classLoader = extClassLoader.getParent();</span><br><span class="line">         System.out.println(classLoader); <span class="comment">// null</span></span><br><span class="line">         </span><br><span class="line">         </span><br><span class="line">         <span class="keyword">int</span> [] array = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">         System.out.println(array.getClass().getClassLoader()); <span class="comment">// null</span></span><br><span class="line">         </span><br><span class="line">         Object [] objects = <span class="keyword">new</span> Object[<span class="number">10</span>];</span><br><span class="line">         System.out.println(objects.getClass().getClassLoader()); <span class="comment">// null</span></span><br><span class="line">         </span><br><span class="line">         App [] apps = <span class="keyword">new</span> App[<span class="number">10</span>];</span><br><span class="line">         System.out.println(apps.getClass().getClassLoader()); <span class="comment">// sun.misc.Launcher$AppClassLoader</span></span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>从以上代码我们能知道以下几点：</p>
+<ul>
+<li>首先，<code>AppClassLoader</code> 和 <code>ExtClassLoader</code> 都是 <code>sun.misc.Launcher</code> 的内部类。</li>
+<li>其次，<code>ExtClassLoader</code> 是 <code>AppClassLoader</code> 的父类加载器，并且是我们能访问到的最高层级的类加载器。</li>
+<li>再次，基本类型和 <code>Object</code> 类型的数组的类加载器为 <code>null</code> （可以认为它们的加载请求被委派给引导类加载器），其它类型的数组与其元素类型的类加载器是相同的（由 <code>Class.getClassLoader()</code> 返回）。</li>
+</ul>
+<p>JVM 的 <code>ClassLoader</code> 采用的是树形结构，使用委托模型来搜索类。<br>简单来说，就是：当一个 <code>ClassLoader</code> 实例，接收到类加载的请求时，它首先会判断该类是否已经被加载过了，如果没有，则把任务委托给其父类加载器（其父子关系一般不是通过继承实现的，而是通过组合来复用代码），只有父类加载器无法加载，它才会尝试自己去加载。<br>这样做的好处有两个：一方面，可以避免重复加载类，因为如果父类加载器已经加载了某个类，那么子类加载器就没必要再去加载了；   另一方面，这样做也更加安全，因为在虚拟机启动的时候，Java 的核心类库就已经被引导类加载器（Bootstrap ClassLoader）加载，通过双亲委托模型可以避免这些类被窜改。</p>
+</li>
+<li><p>链接<br>加载和连接是交叉进行的，加载未完成，链接可能已经开始。</p>
+<p><strong>验证</strong>是链接的第一步，主要是为了保证字节码符合 JVM 规范，并且不会危害到 JVM 的安全。其主要分为四个环节：</p>
+<ul>
+<li>文件格式验证。例如：魔数是否正确，版本号是否在可处理的范围之内等等。</li>
+<li>元数据验证。进行语义分析，例如：是否继承了不允许别继承的类，接口的方法是否被实现等等。</li>
+<li>字节码验证。分析对类方法体的数据流和控制流，例如：类型转换是否正确，跳转指令是否正确等等。</li>
+<li>符号引用验证。发生在解析阶段，会检查符号引用中类、字段和方法是否存在。</li>
+</ul>
+<p><strong>准备</strong>是链接的第二步，主要是为类变量（ <code>static</code> 修饰的变量）在方法区分配内存，并设置初始值，以及完成方法表的初始化等操作。<br>这里容易混淆：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> value = <span class="number">1</span>; <span class="comment">// 要注意的是，在准备阶段过后，value 的值为 0 而不是 1，让其等于 1 的赋值指令是在初始化阶段执行的。</span></span><br><span class="line"><span class="comment">// 这也解释了：为什么类变量可以不用初始化就能使用，而局部变量则不行？</span></span><br></pre></td></tr></table></figure>
+<p><strong>解析</strong>是指解析类或接口中的符号引用，是根据运行时常量池的符号引用来动态决定具体的值的过程，它是链接过程中可选的部分。</p>
+<p>符合引用可以看作一组用于唯一标记引用目标的字符串，与内存布局无关，而直接引用，则可以看作是直接指向目标的指针、相对偏移量或者是间接指向目标的句柄。</p>
+<p>这个阶段还会加载当前类（通过 <code>extends</code> 、 <code>implements</code> 、字段、方法等方式）引用的其他类。</p>
+</li>
+<li><p>初始化<br>类或接口的初始化是指执行类或接口的初始化方法 <code>&lt;clinit&gt;()</code> 。<br>需要注意的是，<code>&lt;clinit&gt;()</code> 方法，不是类的构造方法，它是由编译器自动收集类中所有静态语句块（<code>static{}</code>）和类变量的赋值语句合并而成的方法。</p>
+</li>
+</ol>
+<p>类的加载，对于我们来说，大部分过程都是透明的，除了加载阶段，如果使用自定义的类加载器会有所参与，其余动作都是 JVM 在背后默默地帮我们完成。<br>类的加载、链接和初始化都是在程序运行期完成的，这无疑会增加性能开销，但是，这也带来了灵活性。例如，当我们选择面向接口编程时，就可以在运行期再指定具体的实现类。</p>
+<h2 id="u7C7B_u6267_u884C_u673A_u5236"><a href="#u7C7B_u6267_u884C_u673A_u5236" class="headerlink" title="类执行机制"></a>类执行机制</h2><p>JVM 规范在 “公有设计，私有实现” 章节中提到：JVM 应该有共同的外观（Class 文件格式以及字节码指令集等），但是，可以有不同的实现。<br>也就是说：JVM 只要能够正确读取 Class 文件之中每一条字节码指令，并且能够正确执行这些指令所蕴含的操作即可。至于虚拟机内部究竟是如何处理 Class 文件，这完全是实现者自己的事情。<br>JVM 的实现者可以利用这种伸缩性来让 JVM 获得更高的性能、更低的内存消耗或者更好的可移植性。而最终选择哪种特性，则取决于 JVM 的实现目标和关注点是什么。</p>
+<p>对于 class 文件的执行，主要有两种实现方式：</p>
+<ul>
+<li>解释执行<br>即通过解释器执行。</li>
+<li>编译执行<br>即通过即时编译器产生本地代码执行。</li>
+</ul>
+<p>HotSpot VM 采用了解释器和编译器并存的架构。<br>Java 程序最初是通过解释器执行的，不过，当 JVM 检测到某个方法或代码块被频繁执行时，就会把这些代码认定为“热点代码（Hot Spot Code， 这也是 HotSpot VM 的名称来源）”，并即时编译成本地相关的机器码，编译期间会进行一系列多层次的优化，来提升执行效率。<br>执行过程如下所示：</p>
+<p><img src="/images/方法执行机制.png" alt="方法执行机制" title="方法执行机制"></p>
+<p>在程序运行过程中，最频繁的操作是方法调用。方法调用并不是执行方法体，而是确定被执行的方法版本的过程。<br>方法调用可以分为解析和分派：</p>
+<ul>
+<li>解析<br>如果被调用的方法，在真正运行前就已经确定，并且在运行期不可变，这类方法的调用就称为解析。而满足这种要求的主要是：静态方法、私有方法、构造方法。</li>
+<li>分派（Dispatch）<ul>
+<li>静态分派<br>静态分派会根据传入参数的静态类型选择被调用方法的执行版本。<br>对于同一个类或接口中的重载（Overload）方法，会采用静态分派。</li>
+<li>动态分派<br>动态分派会根据调用者的实际类型选择被调用方法的执行版本。<br>子类对父类的覆盖（Override）方法，会采用动态分派。<br>动态分派需要在运行时匹配合适的方法版本，一般是通过在方法区建立方法表来实现。</li>
+</ul>
+</li>
+</ul>
+<p>其实，不管是虚拟机还是物理机，要想提供代码执行能力，首先都需要设计一套指令集。<br>JVM 的指令集是基于栈架构设计的，这里的栈指的是操作数栈。<br>它的大多数指令操作都是从当前栈帧的操作数栈取出 1 个或多个操作数，或将运算结果压入操作数栈中。<br>每调用一个方法，都会创建一个新的栈帧，并创建对应方法所需的操作数栈和局部变量表。<br>每个线程在运行时的任意时刻，都会包含若干个由不同方法嵌套调用而产生的栈帧，但是只有当前栈帧中的操作数栈才是活动的。</p>
+<p>基于栈的指令集最主要的好处是可移植，另外，编译器的实现也会更简单，因为不用考虑空间分配的问题。而缺点则是执行速度会相对基于寄存器的架构要慢一些，因为栈实现在内存中，并且栈操作产生的指令数量也会多一些。</p>
+<h2 id="u5185_u5B58_u7BA1_u7406"><a href="#u5185_u5B58_u7BA1_u7406" class="headerlink" title="内存管理"></a>内存管理</h2><p>Java 的内存管理既简单又复杂。<br>简单是指，我们在编写程序的时候，已经不用自己手动地去分配和回收内存空间，JVM 会自动地帮我们完成。<br>也正因为存在这种自动管理机制，如果我们不清楚这些隐藏在背后的实现细节，一旦出现内存泄露、溢出等问题，我们也就无从下手了。</p>
+<h3 id="u5185_u5B58_u5206_u914D"><a href="#u5185_u5B58_u5206_u914D" class="headerlink" title="内存分配"></a>内存分配</h3><p>要想运行程序，首先要向操作系统申请内存。通常操作系统会以进程为单位，分配独立的内存地址空间。对于 Java 而言，每一个应用程序都是一个进程，对应着一个 JVM 实例。<br>前面我们已经了解了 JVM 运行时数据区的结构，JVM 在运行时，会把不同类型的数据分别存储在不同的区域，具体每个区域会存放什么样的数据这里就不再赘述。</p>
+<p>我们重点关注 Java 堆的内存分配，因为一般而言，它是 JVM 所管理的最大的，也是最活跃的内存区域：<br>为了让内存回收更加高效，JVM 对 Java 堆进行分代管理。<br>既然要“分代”，那么首先就得区分哪些对象是新的，哪些对象是旧的？<br>JVM 为了解决这个问题，给每个对象都定义一个“年龄”（计数器）。</p>
+<p>如果一个对象在新生代的 Eden 区出生，并且经历第一次 Minor GC（在新生代发生的垃圾回收） 后还仍然存活，同时，Survivor 区也有容纳它的空间，那么它就可以搬去 Survivor 区，这时候该对象的年龄为 1 。<br>这个对象在 Survivor 区每熬过一次 Minor GC 年龄就 + 1 ，直到长到一定岁数（默认 15 ，可配置），就会进入旧生代区。</p>
+<p>这里需要注意的是，在 Minor GC 之前，会首先判断旧生代的最大连续可用空间是否能够放地下新生区所有的对象，如果可以，那就意味着这次 Minor GC 是安全的，否则就要看看虚拟机是否允许冒险（空间分配担保失败），如果允许，则继续判断，如果旧生代的连续可用空间大于历次进入旧生代的对象的大小平均值，那么会尝试执行 Minor GC ，否则执行 Full GC 。</p>
+<h4 id="u5BF9_u8C61_u4EC0_u4E48_u65F6_u5019_u8FDB_u5165_u65B0_u751F_u4EE3_u533A"><a href="#u5BF9_u8C61_u4EC0_u4E48_u65F6_u5019_u8FDB_u5165_u65B0_u751F_u4EE3_u533A" class="headerlink" title="对象什么时候进入新生代区"></a>对象什么时候进入新生代区</h4><p>大多数情况下，对象优先在新生代的 Eden 区分配，如果 Eden 区没有足够的空间，会发起一次 Minor GC （旧生代为 Full GC/Major GC）。</p>
+<h4 id="u5BF9_u8C61_u4EC0_u4E48_u65F6_u5019_u8FDB_u5165_u65E7_u751F_u4EE3_u533A"><a href="#u5BF9_u8C61_u4EC0_u4E48_u65F6_u5019_u8FDB_u5165_u65E7_u751F_u4EE3_u533A" class="headerlink" title="对象什么时候进入旧生代区"></a>对象什么时候进入旧生代区</h4><p>首先，大对象（占用大量连续空间的对象，例如：大数组）会直接进入旧生代。<br>这样做的目的是减少大对象在 Eden 、Survivor 区之间的复制操作开销。<br>其次，长期存活的对象进入旧生代。</p>
+<h3 id="u5185_u5B58_u56DE_u6536"><a href="#u5185_u5B58_u56DE_u6536" class="headerlink" title="内存回收"></a>内存回收</h3><p>关于内存的自动回收，我们要弄清楚三个问题：</p>
+<ul>
+<li>哪些内存需要回收？</li>
+<li>如何回收？</li>
+<li>什么时候回收？</li>
+</ul>
+<h4 id="u54EA_u4E9B_u5185_u5B58_u9700_u8981_u56DE_u6536"><a href="#u54EA_u4E9B_u5185_u5B58_u9700_u8981_u56DE_u6536" class="headerlink" title="哪些内存需要回收"></a>哪些内存需要回收</h4><p>我们知道，程序计数器、JVM 栈、本地方法栈，这 3 个区域的生命周期和 JVM 线程相同，线程结束，内存就跟着被回收了。<br>而 JVM 规范中也有提到，JVM 的实现者可以选择在方法区不实现垃圾收集。其主要原因是，在方法区存放的都是一些常量、还有方法和字段的符号引用，回收的性价比比较低（只能回收一些废弃的常量和无用的类），因此，垃圾收集器也很少光顾方法区。<br>因此，Java 堆是垃圾收集器重点管理的区域。</p>
+<h4 id="u5982_u4F55_u56DE_u6536"><a href="#u5982_u4F55_u56DE_u6536" class="headerlink" title="如何回收"></a>如何回收</h4><p>在垃圾收集器开始回收内存之前，首先要确定哪些对象是“活”的，哪些是“死”的。<br>简单来说，所谓“死”的对象，也就是不会再被使用的对象。</p>
+<p>常见的判断对象生死的算法，有以下 2 种：</p>
+<ul>
+<li>引用计数算法<br>简单来说：就是给对象添加一个引用计数器，每当有一个地方引用它时，引用计数器的值就 + 1 ，当引用失效时，则 - 1 ，只要引用计数器的值为 0 ，就可以判断该对象不再被使用，也就可以被垃圾回收了。<br>这种算法的优点是实现简单，判断效率高。<br>但是，无法解决对象之间循环引用问题，因此未被采用。</li>
+<li>可达性分析算法<br>以根对象集合（一系列的名为 “GC Roots” 的对象）为起点，向下搜索，搜索所走过的路径称为引用链（Reference Chain），当一个对象到根对象集合没有任何引用链相连（用图论的话来说就是从根对象集合到这个对象不可达）时，则判定该对象是不可用的，也就有可能会被回收（这时候处于“死缓”的状态，如果该对象在其 finalize() 方法中，与其它存活对象重新建立关联，那么就可以逃脱死亡的命运。但是，这个方法被调用的不确定性大，不建议使用）。<br>这里需要注意的是，能够作为 “GC Roots” 对象的，主要有以下几种：<ul>
+<li>JVM 栈帧的本地变量表中引用的对象。</li>
+<li>方法区中类静态属性引用的对象。</li>
+<li>方法区中常量引用的对象。</li>
+<li>本地方法栈中本地方法引用的对象。</li>
+</ul>
+</li>
+</ul>
+<p>能够判断对象是否存活，也就具备了垃圾回收的前提，常见的垃圾收集算法有：</p>
+<ul>
+<li>标记-清除算法<br>首先标记出所有需要回收的对象，在标记完成后，统一回收。<br>优点是简单，缺点是效率不高，并且会产生大量的内存碎片。</li>
+<li>复制算法<br>将内存空间均分成两半，每次只使用其中一半。（例如：将新生成的对象放在其中的一半空间，旧对象放在另一个半空间，当对象不可用时，将其删除，然后把还“存活”的新对象复制到旧对象的那半空间）。<br>当空间中存活对象较少时，比较高效，并且不会产生内存碎片，缺点是，可用的内存缩小了一半。</li>
+<li>标记-整理算法<br>和标记-清除算法有点类似，主要区别在于，清除阶段，它会让所有存活的对象都向一端移动，集中起来，也就是说不会产生碎片。</li>
+<li>分代收集算法<br>现在的主流算法。<br>其核心思想是，把对象按照存活时间进行分类存放（一般是分为新生代和旧生代），然后在不同区域使用最合适的算法（例如：在新生代使用复制算法，在旧生代使用标记压缩算法）。</li>
+</ul>
+<p>JVM 规范并没有规定要选用哪种垃圾收集的算法，事实上，不同厂商、不同版本的 JVM 所实现的垃圾收集器也各不相同。由于每种算法都有其适用场景，因此，厂商一般会提供若干种可用的垃圾收集器，以便用户组合使用。</p>
+<h4 id="u4EC0_u4E48_u65F6_u5019_u56DE_u6536"><a href="#u4EC0_u4E48_u65F6_u5019_u56DE_u6536" class="headerlink" title="什么时候回收"></a>什么时候回收</h4><p>不管采用哪种垃圾收集算法，我们都需要分析对象的引用关系，来完成标记。<br>而对象的引用类型，又可以分为以下几种：</p>
+<ul>
+<li><p>强引用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object(); <span class="comment">// 强引用</span></span><br><span class="line">Object other = obj; <span class="comment">// 只有强引用还存在，永远不会被 GC</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>软引用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">SoftReference&lt;Object&gt; softRef = <span class="keyword">new</span> SoftReference&lt;Object&gt;(obj); <span class="comment">// 软引用对象，内存不足时，会被回收，可用于实现简单缓存</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>弱引用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">WeakReference&lt;Object&gt; softRef = <span class="keyword">new</span> WeakReference&lt;Object&gt;(obj); <span class="comment">// 弱引用对象，只能活到下一次 GC 发生之前</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>虚引用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">ReferenceQueue&lt;Object&gt; refQueue = <span class="keyword">new</span> ReferenceQueue&lt;Object&gt;(); <span class="comment">// 引用队列</span></span><br><span class="line">PhantomReference&lt;Object&gt; softRef = <span class="keyword">new</span> PhantomReference&lt;Object&gt;(obj, refQueue); <span class="comment">// 虚引用对象，对被引用的对象不构成影响，可以用来跟踪对象是否已经从内存中删除</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>然而运行中的程序，对象的引用关系总是在不断变化的。<br>因此，为了保证对象引用关系分析结果的准确性，就需要把整个执行系统冻结在某个时间点上，也就是说，当 JVM 进行垃圾回收时，必须停顿所有的执行线程（Stop The World）。<br>但是，实际上，在程序在执行的过程中，并不是所有的地方都能够安全地停下来的。<br>因此，我们就需要选定一些特殊的位置，来让程序暂停。这些特殊的位置，一般称之为：安全点（Safepoint）。<br>可以说，安全点为垃圾收集器开展工作提供了一个潜在的入口。<br>那么问题又来了：</p>
+<ul>
+<li>什么样的位置才能够成为安全点呢？<br>首先，安全点的数量不能太少，否则，垃圾收集器等待的时间就会很长，名存实亡。<br>但也不能太多，不然垃圾收集器就会忙得不可开交，以至于增大运行时的开销。<br>显然，在一条字节码指令中间放置安全点是不合适的，理论上来说，在解释器中的每一条字节码指令的边界处，都可以放置一个安全点。但是大部分指令的执行时间都比较短，如果都设置就太多了，因此，一般会在执行时间比较长的指令（例如：方法调用、循环跳转、异常跳转等）边界处设置安全点。</li>
+<li>当程序运行到安全点的时候，JVM 又是如何做到中断所有线程的？<br>JVM 采用主动式中断线程：当垃圾收集器需要中断线程的时候，不是直接对线程操作，而是简单地设置一个标识，让各个线程主动去轮询这个标识，如果发现标识为真，就把自己挂起。<br>然而，JVM 在中断全部线程之前，线程是可能处在不同的状态的。例如，线程已经处于 BLOCKED 或 WAITING 状态时，也不可能走到安全点来挂起。这时候就需要安全区域（Safe Region）来解决了。我们可以把安全区域可以看作是一个引用关系不会发生变化的代码片段，在这个区域内的触发 GC 都是安全的。</li>
+</ul>
+<h2 id="u603B_u7ED3"><a href="#u603B_u7ED3" class="headerlink" title="总结"></a>总结</h2><p>JVM 所涉及的内容很多，并且和具体的虚拟机实现也紧密相关。在这里没有办法做到面面俱到，还有待于后续的补充、学习。<br>我们学习 JVM 的知识，从大的方面来说，可以加深对 Java 平台的理解；从小的方面来说，可以帮助我们实践性能调优和故障处理。<br>作为一个有志向、负责任的 Java 开发者，掌握 JVM 的核心知识，不可或缺。</p>
+<h2 id="u53C2_u8003_u8D44_u6E90"><a href="#u53C2_u8003_u8D44_u6E90" class="headerlink" title="参考资源"></a>参考资源</h2><ul>
+<li><a href="http://docs.oracle.com/javase/specs/index.html" title="Java 语言和虚拟机规范" target="_blank" rel="external">Java Language and Virtual Machine Specifications</a></li>
+<li>《深入理解 Java 虚拟机：JVM 高级特性与最佳实践（第2版）》，周志明。</li>
+</ul>
+
+      
+    </div>
+
+    <div class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JVM/"> #JVM </a>
+          
+            <a href="/tags/java/"> #java </a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/25/Go漫游笔记-01-初次见面/">Go漫游笔记-01-初次见面</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/10/Java漫游笔记-14-RMI和WebService/">Java漫游笔记-14-RMI和WebService</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </div>
+  </div>
+
+
+
+    
+      <div class="post-spread">
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      </div>
+    
+
+    
+      <div class="comments" id="comments">
+        
+          <div class="ds-thread" data-thread-key="2015/08/12/Java漫游笔记-15-JVM/"
+               data-title="Java漫游笔记-15-JVM" data-url="http://frankyzhu.github.io/2015/08/12/Java漫游笔记-15-JVM/">
+          </div>
+        
+      </div>
+    
+  </div>
+
+
+        </div>
+
+        
+      </div>
+
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview">
+        <div class="site-author motion-element">
+          <img class="site-author-image" src="https://avatars2.githubusercontent.com/u/12979447?v=3&s=460" alt="Franky Zhu" />
+          <p class="site-author-name">Franky Zhu</p>
+        </div>
+        <p class="site-description motion-element"></p>
+        <div class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">28</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </div>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+              <a href="https://github.com/frankyzhu" target="_blank">GitHub</a>
+            </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </div>
+
+      
+        <div class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK__u3001JRE__u3001JVM__u7684_u5173_u7CFB"><span class="nav-number">1.</span> <span class="nav-text">JDK 、JRE 、JVM 的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM__u67B6_u6784"><span class="nav-number">2.</span> <span class="nav-text">JVM 架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u6E90_u4EE3_u7801_u7F16_u8BD1_u673A_u5236"><span class="nav-number">3.</span> <span class="nav-text">源代码编译机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u7C7B_u52A0_u8F7D_u673A_u5236"><span class="nav-number">4.</span> <span class="nav-text">类加载机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u7C7B_u6267_u884C_u673A_u5236"><span class="nav-number">5.</span> <span class="nav-text">类执行机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5185_u5B58_u7BA1_u7406"><span class="nav-number">6.</span> <span class="nav-text">内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5185_u5B58_u5206_u914D"><span class="nav-number">6.1.</span> <span class="nav-text">内存分配</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u5BF9_u8C61_u4EC0_u4E48_u65F6_u5019_u8FDB_u5165_u65B0_u751F_u4EE3_u533A"><span class="nav-number">6.1.1.</span> <span class="nav-text">对象什么时候进入新生代区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5BF9_u8C61_u4EC0_u4E48_u65F6_u5019_u8FDB_u5165_u65E7_u751F_u4EE3_u533A"><span class="nav-number">6.1.2.</span> <span class="nav-text">对象什么时候进入旧生代区</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5185_u5B58_u56DE_u6536"><span class="nav-number">6.2.</span> <span class="nav-text">内存回收</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u54EA_u4E9B_u5185_u5B58_u9700_u8981_u56DE_u6536"><span class="nav-number">6.2.1.</span> <span class="nav-text">哪些内存需要回收</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u5982_u4F55_u56DE_u6536"><span class="nav-number">6.2.2.</span> <span class="nav-text">如何回收</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u4EC0_u4E48_u65F6_u5019_u56DE_u6536"><span class="nav-number">6.2.3.</span> <span class="nav-text">什么时候回收</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u603B_u7ED3"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u53C2_u8003_u8D44_u6E90"><span class="nav-number">8.</span> <span class="nav-text">参考资源</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </div>
+      
+
+    </div>
+  </div>
+
+
+    </div>
+
+    <div id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; &nbsp; 
+  2015
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author">Franky Zhu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.3"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.3"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.3" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var $sidebarInner = $('.sidebar-inner');
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.didShow', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+          var self = this;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      $(indicator).velocity('stop').velocity({
+        opacity: action === 'show' ? 0.4 : 0
+      }, { duration: 100 });
+    }
+
+  });
+</script>
+
+
+  <script type="text/javascript" id="sidebar.nav">
+    $(document).ready(function () {
+      var html = $('html');
+
+      $('.sidebar-nav li').on('click', function () {
+        var item = $(this);
+        var activeTabClassName = 'sidebar-nav-active';
+        var activePanelClassName = 'sidebar-panel-active';
+        if (item.hasClass(activeTabClassName)) {
+          return;
+        }
+
+        var currentTarget = $('.' + activePanelClassName);
+        var target = $('.' + item.data('target'));
+
+        currentTarget.velocity('transition.slideUpOut', 200, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', 200)
+            .addClass(activePanelClassName);
+        });
+
+        item.siblings().removeClass(activeTabClassName);
+        item.addClass(activeTabClassName);
+      });
+
+      $('.post-toc a').on('click', function (e) {
+        e.preventDefault();
+        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        });
+      });
+
+      // Expand sidebar on post detail page by default, when post has a toc.
+      var $tocContent = $('.post-toc-content');
+      if (isDesktop() && CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    });
+  </script>
+
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"codinglike"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+
+
+  
+  
+
+</body>
+</html>
